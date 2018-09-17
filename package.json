@@ -8,7 +8,9 @@
     "build:watch": "mkdir -p dist && watchify src/main.ts -p [ tsify --noImplicitAny ] -o 'cat > dist/janim.js'",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "tape -r ts-node/register test/**/*.ts | tap-spec",
-    "test:watch": "tape-watch -r ts-node/register test/**/*.ts | tap-spec"
+    "test:watch": "tape-watch -r ts-node/register test/**/*.ts | tap-spec",
+    "test:coverage": "nyc npm test",
+    "test:report": "nyc report --reporter=html"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,14 @@
     "url": "https://github.com/jolson88/janim/issues"
   },
   "homepage": "https://github.com/jolson88/janim#readme",
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "**/*.test.ts"
+    ]
+  },
   "devDependencies": {
     "@types/ramda": "github:types/npm-ramda#dist",
     "@types/tape": "^4.2.32",
