@@ -1,0 +1,44 @@
+{
+  "name": "janim",
+  "version": "0.1.0",
+  "description": "A lightweight, functional, HTML5 creative coding library for developers",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify src/main.ts -p [ tsify --noImplicitAny ] > dist/index.js",
+    "test": "browserify test/main.ts -p [ tsify --noImplicitAny ] | node",
+    "test-browser": "browserify test/main.ts -p [ tsify --noImplicitAny ] | testling",
+    "test-watch": "watchify test/main.ts -p [ tsify --noImplicitAny ] -o 'cat | node'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jolson88/janim.git"
+  },
+  "keywords": [
+    "canvas",
+    "javascript",
+    "browser",
+    "animation",
+    "sketching",
+    "creative",
+    "processing"
+  ],
+  "author": "Jason Olson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jolson88/janim/issues"
+  },
+  "homepage": "https://github.com/jolson88/janim#readme",
+  "devDependencies": {
+    "@types/ramda": "github:types/npm-ramda#dist",
+    "@types/tape": "^4.2.32",
+    "browserify": "^16.2.2",
+    "tape": "^4.9.1",
+    "testling": "^1.7.1",
+    "tsify": "^4.0.0",
+    "typescript": "^3.0.3",
+    "watchify": "^3.11.0"
+  },
+  "dependencies": {
+    "ramda": "^0.25.0"
+  }
+}
