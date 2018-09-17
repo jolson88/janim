@@ -4,12 +4,11 @@
   "description": "A lightweight, functional, HTML5 creative coding library for developers",
   "main": "index.js",
   "scripts": {
-    "build": "mkdir -p dist && browserify src/main.ts -p [ tsify --noImplicitAny ] > dist/index.js",
-    "build:watch": "mkdir -p dist && watchify src/main.ts -p [ tsify --noImplicitAny ] -o 'cat > dist/index.js'",
+    "build": "mkdir -p dist && browserify src/main.ts -p [ tsify --noImplicitAny ] > dist/janim.js",
+    "build:watch": "mkdir -p dist && watchify src/main.ts -p [ tsify --noImplicitAny ] -o 'cat > dist/janim.js'",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "test": "browserify test/interpolationTest.ts -p [ tsify --noImplicitAny ] | node",
-    "test:browser": "browserify test/interpolationTest.ts -p [ tsify --noImplicitAny ] | testling",
-    "test:watch": "watchify test/interpolationTest.ts -p [ tsify --noImplicitAny ] -o 'cat | node'"
+    "test": "tape -r ts-node/register test/**/*.ts | tap-spec",
+    "test:watch": "tape-watch -r ts-node/register test/**/*.ts | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -34,14 +33,17 @@
     "@types/ramda": "github:types/npm-ramda#dist",
     "@types/tape": "^4.2.32",
     "browserify": "^16.2.2",
+    "nyc": "^13.0.1",
+    "tap-spec": "^5.0.0",
     "tape": "^4.9.1",
-    "testling": "^1.7.1",
+    "tape-watch": "^2.3.0",
+    "ts-node": "^7.0.1",
     "tsify": "^4.0.0",
+    "tslint": "^5.11.0",
     "typescript": "^3.0.3",
     "watchify": "^3.11.0"
   },
   "dependencies": {
-    "ramda": "^0.25.0",
-    "tslint": "^5.11.0"
+    "ramda": "^0.25.0"
   }
 }
