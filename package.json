@@ -7,9 +7,9 @@
     "build": "mkdir -p dist && browserify src/main.ts -p [ tsify --noImplicitAny ] > dist/index.js",
     "build:watch": "mkdir -p dist && watchify src/main.ts -p [ tsify --noImplicitAny ] -o 'cat > dist/index.js'",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "test": "browserify test/main.ts -p [ tsify --noImplicitAny ] | node",
-    "test:browser": "browserify test/main.ts -p [ tsify --noImplicitAny ] | testling",
-    "test:watch": "watchify test/main.ts -p [ tsify --noImplicitAny ] -o 'cat | node'"
+    "test": "browserify test/interpolationTest.ts -p [ tsify --noImplicitAny ] | node",
+    "test:browser": "browserify test/interpolationTest.ts -p [ tsify --noImplicitAny ] | testling",
+    "test:watch": "watchify test/interpolationTest.ts -p [ tsify --noImplicitAny ] -o 'cat | node'"
   },
   "repository": {
     "type": "git",
