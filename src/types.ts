@@ -6,7 +6,7 @@ export type Function<T, U> = (arg: T) => U;
 /**
  * The time properties of a running sketch
  */
-export class Time {
+export interface ITime {
     /**
      * The total time in milliseconds since the sketch was started
      */
@@ -16,9 +16,16 @@ export class Time {
      * The elapsed time in milliseconds since the previous frame of the sketch
      */
     elapsed: number;
+}
 
-    constructor(total: number, elapsed = 0) {
-        this.total = total;
-        this.elapsed = elapsed;
-    }
+/**
+ * Creates an object adhering to ITime interface
+ * @param total The total time in milliseconds
+ * @param elapsed The elapsed time in milliseconds since previous frame
+ */
+export function makeTime(total: number, elapsed = 0): ITime {
+    return {
+        elapsed,
+        total,
+    };
 }
