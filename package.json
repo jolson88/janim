@@ -4,10 +4,12 @@
   "description": "A lightweight, functional, HTML5 creative coding library for developers",
   "main": "index.js",
   "scripts": {
-    "build": "browserify src/main.ts -p [ tsify --noImplicitAny ] > dist/index.js",
+    "build": "mkdir -p dist && browserify src/main.ts -p [ tsify --noImplicitAny ] > dist/index.js",
+    "build:watch": "mkdir -p dist && watchify src/main.ts -p [ tsify --noImplicitAny ] -o 'cat > dist/index.js'",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "browserify test/main.ts -p [ tsify --noImplicitAny ] | node",
-    "test-browser": "browserify test/main.ts -p [ tsify --noImplicitAny ] | testling",
-    "test-watch": "watchify test/main.ts -p [ tsify --noImplicitAny ] -o 'cat | node'"
+    "test:browser": "browserify test/main.ts -p [ tsify --noImplicitAny ] | testling",
+    "test:watch": "watchify test/main.ts -p [ tsify --noImplicitAny ] -o 'cat | node'"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,7 @@
     "watchify": "^3.11.0"
   },
   "dependencies": {
-    "ramda": "^0.25.0"
+    "ramda": "^0.25.0",
+    "tslint": "^5.11.0"
   }
 }
