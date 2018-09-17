@@ -6,6 +6,7 @@
   "scripts": {
     "build": "mkdir -p dist && browserify src/main.ts -p [ tsify --noImplicitAny ] --standalone J > dist/janim.js",
     "build:watch": "mkdir -p dist && watchify src/main.ts -p [ tsify --noImplicitAny ] --standalone J -o 'cat > dist/janim.js'",
+    "ci": "npm run lint && npm run build && npm run test:coverage && npm run docs",
     "docs": "mkdir -p docs && typedoc --mode file --out ./docs ./src",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "tape -r ts-node/register test/**/*.ts | tap-spec",
