@@ -4,8 +4,8 @@
   "description": "A lightweight, functional, HTML5 creative coding library for developers",
   "main": "index.js",
   "scripts": {
-    "build": "mkdir -p dist && browserify src/main.ts -p [ tsify --noImplicitAny ] > dist/janim.js",
-    "build:watch": "mkdir -p dist && watchify src/main.ts -p [ tsify --noImplicitAny ] -o 'cat > dist/janim.js'",
+    "build": "mkdir -p dist && browserify src/main.ts -p [ tsify --noImplicitAny ] --standalone J > dist/janim.js",
+    "build:watch": "mkdir -p dist && watchify src/main.ts -p [ tsify --noImplicitAny ] --standalone J -o 'cat > dist/janim.js'",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "tape -r ts-node/register test/**/*.ts | tap-spec",
     "test:watch": "tape-watch -r ts-node/register test/**/*.ts | tap-spec",
