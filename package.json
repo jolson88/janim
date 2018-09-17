@@ -6,6 +6,7 @@
   "scripts": {
     "build": "mkdir -p dist && browserify src/main.ts -p [ tsify --noImplicitAny ] --standalone J > dist/janim.js",
     "build:watch": "mkdir -p dist && watchify src/main.ts -p [ tsify --noImplicitAny ] --standalone J -o 'cat > dist/janim.js'",
+    "docs": "mkdir -p docs && typedoc --mode file --out ./docs ./src",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "tape -r ts-node/register test/**/*.ts | tap-spec",
     "test:watch": "tape-watch -r ts-node/register test/**/*.ts | tap-spec",
@@ -50,6 +51,7 @@
     "ts-node": "^7.0.1",
     "tsify": "^4.0.0",
     "tslint": "^5.11.0",
+    "typedoc": "^0.12.0",
     "typescript": "^3.0.3",
     "watchify": "^3.11.0"
   },
