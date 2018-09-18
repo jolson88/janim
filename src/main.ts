@@ -1,3 +1,4 @@
 export * from './animation';
-export * from './types';
 export * from './shapes';
+export * from './style';
+export * from './types';

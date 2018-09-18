@@ -79,6 +79,7 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#function" class="tsd-kind-icon">Function</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#stylefunction" class="tsd-kind-icon">Style<wbr>Function</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -91,6 +92,7 @@
 								<li class="tsd-kind-function"><a href="globals.html#colorrotate" class="tsd-kind-icon">color<wbr>Rotate</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#constant" class="tsd-kind-icon">constant</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#lerpcolor" class="tsd-kind-icon">lerp<wbr>Color</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#outline" class="tsd-kind-icon">outline</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#position" class="tsd-kind-icon">position</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#sinosc" class="tsd-kind-icon">sin<wbr>Osc</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#size" class="tsd-kind-icon">size</a></li>
@@ -111,7 +113,7 @@
 					<div class="tsd-signature tsd-kind-icon">Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/types.ts#L4">types.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/types.ts#L4">types.ts:4</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -141,6 +143,45 @@
 						</ul>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="stylefunction" class="tsd-anchor"></a>
+					<h3>Style<wbr>Function</h3>
+					<div class="tsd-signature tsd-kind-icon">Style<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/types.ts#L9">types.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A function for setting the style of an animated shape</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CanvasRenderingContext2D</span>, t<span class="tsd-signature-symbol">: </span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>ctx: <span class="tsd-signature-type">CanvasRenderingContext2D</span></h5>
+											</li>
+											<li>
+												<h5>t: <a href="interfaces/itime.html" class="tsd-signature-type">ITime</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
@@ -148,13 +189,13 @@
 					<a name="animatedellipse" class="tsd-anchor"></a>
 					<h3>animated<wbr>Ellipse</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">animated<wbr>Ellipse<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, color<span class="tsd-signature-symbol">: </span><a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, size<span class="tsd-signature-symbol">: </span><a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="interfaces/isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span>, position<span class="tsd-signature-symbol">: </span><a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="interfaces/iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">animated<wbr>Ellipse<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, size<span class="tsd-signature-symbol">: </span><a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="interfaces/isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span>, position<span class="tsd-signature-symbol">: </span><a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="interfaces/iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span>, style<span class="tsd-signature-symbol">: </span><a href="globals.html#stylefunction" class="tsd-signature-type">StyleFunction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/shapes.ts#L23">shapes.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/shapes.ts#L23">shapes.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -171,12 +212,6 @@
 									</div>
 								</li>
 								<li>
-									<h5>color: <a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The color of the ellipse, given the time</p>
-									</div>
-								</li>
-								<li>
 									<h5>size: <a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="interfaces/isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The size of the ellipse, given the time</p>
@@ -187,6 +222,9 @@
 									<div class="tsd-comment tsd-typography">
 										<p>The position of the ellipse, given the time</p>
 									</div>
+								</li>
+								<li>
+									<h5>style: <a href="globals.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -204,7 +242,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/animation.ts#L69">animation.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/animation.ts#L69">animation.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -248,7 +286,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/shapes.ts#L8">shapes.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/shapes.ts#L8">shapes.ts:8</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -285,7 +323,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/types.ts#L47">types.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/types.ts#L52">types.ts:52</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -334,7 +372,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/animation.ts#L140">animation.ts:140</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/animation.ts#L140">animation.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -378,7 +416,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/animation.ts#L89">animation.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/animation.ts#L89">animation.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -416,7 +454,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/animation.ts#L117">animation.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/animation.ts#L117">animation.ts:117</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -445,6 +483,44 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="outline" class="tsd-anchor"></a>
+					<h3>outline</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">outline<span class="tsd-signature-symbol">(</span>lineSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, color<span class="tsd-signature-symbol">: </span><a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#stylefunction" class="tsd-signature-type">StyleFunction</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in style.ts:9</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Outlines shapes with solid outline and no fill</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>lineSize: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The size of the line making the outline</p>
+									</div>
+								</li>
+								<li>
+									<h5>color: <a href="globals.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Function that returns a color given the time</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h4>
+							<p>Function that given the rendering context and time, configures the context style</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="position" class="tsd-anchor"></a>
 					<h3>position</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -454,7 +530,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/types.ts#L72">types.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/types.ts#L77">types.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -491,7 +567,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/animation.ts#L55">animation.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/animation.ts#L55">animation.ts:55</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -523,7 +599,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/types.ts#L89">types.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/types.ts#L94">types.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -560,7 +636,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/animation.ts#L14">animation.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/animation.ts#L14">animation.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -589,7 +665,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/types.ts#L26">types.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/types.ts#L31">types.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -626,7 +702,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/types.ts#L55">types.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/types.ts#L60">types.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -657,7 +733,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/b95c6c6/src/animation.ts#L100">animation.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/7522ba7/src/animation.ts#L100">animation.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -716,6 +792,9 @@
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#function" class="tsd-kind-icon">Function</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#stylefunction" class="tsd-kind-icon">Style<wbr>Function</a>
+					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#animatedellipse" class="tsd-kind-icon">animated<wbr>Ellipse</a>
 					</li>
@@ -736,6 +815,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#lerpcolor" class="tsd-kind-icon">lerp<wbr>Color</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#outline" class="tsd-kind-icon">outline</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#position" class="tsd-kind-icon">position</a>

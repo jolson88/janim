@@ -4,6 +4,11 @@
 export type Function<T, U> = (arg: T) => U;
 
 /**
+ * A function for setting the style of an animated shape
+ */
+export type StyleFunction = (ctx: CanvasRenderingContext2D, t: ITime) => void;
+
+/**
  * The time properties of a running sketch
  */
 export interface ITime {
