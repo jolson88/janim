@@ -1,9 +1,9 @@
 import * as test from 'tape';
-import { constant, constantPosition, constantSize, sinOsc } from '../src/animation';
-import { makeTime } from '../src/types';
+import { circularOrbit, constant, sinOsc } from '../src/animation';
+import { makePosition, makeTime } from '../src/types';
 import { nearEqual } from './helpers';
 
-test('Sine Oscillation', (t) => {
+test('Sine oscillation', (t) => {
     const fn = sinOsc(1000);
     t.equal(fn(makeTime(250)), 1, 'should reach max val of oscillator');
     t.equal(fn(makeTime(750)), -1, 'should reach min val of oscillator');
@@ -12,18 +12,23 @@ test('Sine Oscillation', (t) => {
 });
 
 test('Constant returns', (t) => {
-    let c: any = constant(1);
+    const c: any = constant(1);
     t.equal(c(2), 1, 'should return constant value on first call');
     t.equal(c('string'), 1, 'should return constant value on successive calls');
+    t.end();
+});
 
-    c = constantPosition(1, 2);
-    const p1 = c(1);
-    const p2 = c(2);
-    t.equal(p1, p2, 'should return constant positions on successive calls');
+test('Circular orbit', (t) => {
+    const center = makePosition(100, 200);
+    const radius = 10;
+    const duration = 1000;
+    const orbit = circularOrbit(constant(center), constant(radius), duration);
 
-    c = constantSize(100, 200);
-    const c1 = c(1);
-    const c2 = c(2);
-    t.equal(c1, c2, 'should return constant size on successive calls');
+    let p = orbit(makeTime(0, 0));
+    t.equal(p.x, 100, 'should have initial orbit x coord');
+    t.equal(p.y, 210, 'should have initial orbit y coord');
+    p = orbit(makeTime(250, 0));
+    t.equal(p.x, 110, 'x coord should change on orbit');
+    t.equal(p.y, 200, 'y coord should change on orbit');
     t.end();
 });

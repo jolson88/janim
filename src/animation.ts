@@ -14,30 +14,32 @@ export function sinOsc(cycleLength: number): Function<ITime, number> {
 }
 
 /**
+ * Creates a circular orbit that returns an orbital position for any given time
+ * @param center A function that, given the time, returns the center position at that time
+ * @param radius A function that, given the time, returns the radius at that time
+ * @param duration The duration in milliseconds of the orbit
+ * @returns A function that, given the time, returns the position at that time
+ */
+export function circularOrbit(
+    center: Function<ITime, IPosition>,
+    radius: Function<ITime, number>,
+    duration: number,
+): Function<ITime, IPosition> {
+    return (time) => {
+        const p = center(time);
+        const r = radius(time);
+        const radians = ((time.total % duration) / duration) * 2 * Math.PI;
+        const xOffset = Math.sin(radians) * r;
+        const yOffset = Math.cos(radians) * r;
+        return makePosition(p.x + xOffset, p.y + yOffset);
+    };
+}
+
+/**
  * Always return a constant value no matter what parameter is passed to returning function
  * @param val Constant value to return from function
  * @returns Function that ignores the parameter passed and always returns specified value
  */
-export function constant<T>(val: T): Function<any, T> {
+export function constant<T>(val: T): Function<ITime, T> {
     return R.always(val);
-}
-
-/**
- * Always return a constant size no matter what parameter is passed to returning function
- * @param width The object's width
- * @param height The object's height
- * @returns Function that ignores the parameter passed and always returns specified size
- */
-export function constantSize(width: number, height: number): Function<any, ISize> {
-    return R.always(makeSize(width, height));
-}
-
-/**
- * Always return a constant position no matter what parameter is passed to returning function
- * @param x The object's x coordinate
- * @param y The object's y coordinate
- * @returns Function that ignores the parameter passed and always returns specified position
- */
-export function constantPosition(x: number, y: number): Function<any, IPosition> {
-    return R.always(makePosition(x, y));
 }
