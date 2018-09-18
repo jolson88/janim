@@ -1,5 +1,5 @@
 import * as test from 'tape';
-import { makeColor, makeTime, toCssColor } from '../src/types';
+import { makeColor, makePoint, makeSize, makeTime, toCssColor } from '../src/types';
 
 test('Colors', (t) => {
     const r = 120;
@@ -29,5 +29,19 @@ test('Time', (t) => {
 
     time = makeTime(total);
     t.equal(time.elapsed, 0, 'should default elapsed time to 0');
+    t.end();
+});
+
+test('Size', (t) => {
+    const s = makeSize(200, 200);
+    t.equal(s.width, 200, 'should capture width');
+    t.equal(s.height, 200, 'should capture height');
+    t.end();
+});
+
+test('Position', (t) => {
+    const p = makePoint(200, 200);
+    t.equal(p.x, 200, 'should capture x coord');
+    t.equal(p.y, 200, 'should capture y coord');
     t.end();
 });

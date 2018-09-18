@@ -19,6 +19,15 @@ export interface ITime {
 }
 
 /**
+ * Creates an object adhering to ITime interface
+ * @param total The total time in milliseconds
+ * @param elapsed The elapsed time in milliseconds since previous frame
+ */
+export function makeTime(total: number, elapsed = 0): ITime {
+    return { elapsed, total };
+}
+
+/**
  * Color represented by four channels: red, green, blue, and alpha.
  */
 export interface IColor {
@@ -26,15 +35,6 @@ export interface IColor {
     g: number;
     b: number;
     a: number;
-}
-
-/**
- * Creates an object adhering to ITime interface
- * @param total The total time in milliseconds
- * @param elapsed The elapsed time in milliseconds since previous frame
- */
-export function makeTime(total: number, elapsed = 0): ITime {
-    return { elapsed, total };
 }
 
 /**
@@ -54,4 +54,38 @@ export function makeColor(r: number, g: number, b: number, a = 1): IColor {
  */
 export function toCssColor(c: IColor): string {
     return `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a})`;
+}
+
+/**
+ * A point in space represented by x and y coordinates
+ */
+export interface IPoint {
+    x: number;
+    y: number;
+}
+
+/**
+ * Creates a point in space given x and y coordinates
+ * @param x X coordinate
+ * @param y Y coordinate
+ */
+export function makePoint(x: number, y: number): IPoint {
+    return { x, y };
+}
+
+/**
+ * Represents an object's size in space
+ */
+export interface ISize {
+    width: number;
+    height: number;
+}
+
+/**
+ * Creates an object representing an object's size in space
+ * @param width width
+ * @param height height
+ */
+export function makeSize(width: number, height: number): ISize {
+    return { width, height };
 }
