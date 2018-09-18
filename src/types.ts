@@ -89,3 +89,22 @@ export interface ISize {
 export function makeSize(width: number, height: number): ISize {
     return { width, height };
 }
+
+/**
+ * A JAnim Sketch
+ */
+export interface ISketch {
+    /** Stop running this sketch */
+    stop: () => void;
+}
+
+/**
+ *  Contextual information for a rendering frame
+ */
+export interface IFrame {
+    /** Canvas rendering context for custom operations */
+    ctx: CanvasRenderingContext2D;
+
+    /** Time information about current frame */
+    time: ITime;
+}

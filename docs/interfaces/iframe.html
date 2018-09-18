@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ISize | janim</title>
+	<title>IFrame | janim</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="isize.html">ISize</a>
+					<a href="iframe.html">IFrame</a>
 				</li>
 			</ul>
-			<h1>Interface ISize</h1>
+			<h1>Interface IFrame</h1>
 		</div>
 	</div>
 </header>
@@ -67,7 +67,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Represents an object&#39;s size in space</p>
+						<p> Contextual information for a rendering frame</p>
 					</div>
 				</div>
 			</section>
@@ -75,7 +75,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ISize</span>
+						<span class="target">IFrame</span>
 					</li>
 				</ul>
 			</section>
@@ -86,8 +86,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="isize.html#height" class="tsd-kind-icon">height</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="isize.html#width" class="tsd-kind-icon">width</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iframe.html#ctx" class="tsd-kind-icon">ctx</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iframe.html#time" class="tsd-kind-icon">time</a></li>
 							</ul>
 						</section>
 					</div>
@@ -96,24 +96,34 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="height" class="tsd-anchor"></a>
-					<h3>height</h3>
-					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="ctx" class="tsd-anchor"></a>
+					<h3>ctx</h3>
+					<div class="tsd-signature tsd-kind-icon">ctx<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CanvasRenderingContext2D</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jolson88/janim/blob/46cfca9/src/types.ts#L81">types.ts:81</a></li>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/46cfca9/src/types.ts#L106">types.ts:106</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Canvas rendering context for custom operations</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="width" class="tsd-anchor"></a>
-					<h3>width</h3>
-					<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="time" class="tsd-anchor"></a>
+					<h3>time</h3>
+					<div class="tsd-signature tsd-kind-icon">time<span class="tsd-signature-symbol">:</span> <a href="itime.html" class="tsd-signature-type">ITime</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jolson88/janim/blob/46cfca9/src/types.ts#L80">types.ts:80</a></li>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/46cfca9/src/types.ts#L109">types.ts:109</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Time information about current frame</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -130,27 +140,27 @@
 					<li class=" tsd-kind-interface">
 						<a href="icolor.html" class="tsd-kind-icon">IColor</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iframe.html" class="tsd-kind-icon">IFrame</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iposition.html" class="tsd-kind-icon">IPosition</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="isize.html" class="tsd-kind-icon">ISize</a>
+						<a href="iframe.html" class="tsd-kind-icon">IFrame</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="isize.html#height" class="tsd-kind-icon">height</a>
+								<a href="iframe.html#ctx" class="tsd-kind-icon">ctx</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="isize.html#width" class="tsd-kind-icon">width</a>
+								<a href="iframe.html#time" class="tsd-kind-icon">time</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface">
+						<a href="iposition.html" class="tsd-kind-icon">IPosition</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="isize.html" class="tsd-kind-icon">ISize</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="isketch.html" class="tsd-kind-icon">ISketch</a>
 					</li>

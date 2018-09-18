@@ -1,5 +1,53 @@
 import * as R from 'ramda';
-import { Function, IPosition, ISize, ITime, makePosition, makeSize } from './types';
+import {
+    Function,
+    IFrame,
+    IPosition,
+    ISketch,
+    ITime,
+    makePosition,
+    makeTime,
+} from './types';
+
+function createFrame(ctx: CanvasRenderingContext2D, time: ITime) {
+    return { ctx, time };
+}
+
+export function startSketch(
+    canvas: HTMLCanvasElement,
+    setup: Function<CanvasRenderingContext2D, void>,
+    draw: Function<IFrame, void>,
+): ISketch {
+    this.ctx = canvas.getContext('2d');
+    this.draw = draw;
+    this.playing = false;
+    this.startTime = Date.now();
+
+    function loop(sketch: any, beginningTime: number, lastFrameTime: number) {
+        return () => {
+            const currentTime = Date.now();
+            const elapsedTime = currentTime - lastFrameTime;
+            const totalTime = currentTime - beginningTime;
+            sketch.draw(createFrame(sketch.ctx, makeTime(totalTime, elapsedTime)));
+
+            if (sketch.playing) {
+                window.requestAnimationFrame(loop(sketch, beginningTime, currentTime));
+            }
+        };
+    }
+
+    setup(this.ctx);
+    this.playing = true;
+    window.requestAnimationFrame(loop(this, Date.now(), Date.now()));
+
+    return ((sketch) => {
+        return {
+            stop: () => {
+                sketch.playing = false;
+            },
+        };
+    })(this);
+}
 
 /**
  * An oscillator that uses the sin function to calculate its values
