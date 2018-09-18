@@ -59,17 +59,17 @@ export function toCssColor(c: IColor): string {
 /**
  * A point in space represented by x and y coordinates
  */
-export interface IPoint {
+export interface IPosition {
     x: number;
     y: number;
 }
 
 /**
- * Creates a point in space given x and y coordinates
+ * Creates a position in space given x and y coordinates
  * @param x X coordinate
  * @param y Y coordinate
  */
-export function makePoint(x: number, y: number): IPoint {
+export function makePosition(x: number, y: number): IPosition {
     return { x, y };
 }
 

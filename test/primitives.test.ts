@@ -1,5 +1,5 @@
 import * as test from 'tape';
-import { makeColor, makePoint, makeSize, makeTime, toCssColor } from '../src/types';
+import { makeColor, makePosition, makeSize, makeTime, toCssColor } from '../src/types';
 
 test('Colors', (t) => {
     const r = 120;
@@ -10,7 +10,7 @@ test('Colors', (t) => {
     let c = makeColor(r, g, b, 0.5);
     t.equal(c.r, r, 'should set red channel');
     t.equal(c.g, g, 'should set green channel');
-    t.equal(c.b, b, 'should set blue channel')
+    t.equal(c.b, b, 'should set blue channel');
     t.equal(c.a, 0.5, 'should set alpha channel');
     t.equal(toCssColor(c), `rgba(${r}, ${g}, ${b}, ${a})`, 'should convert to CSS color string');
 
@@ -40,7 +40,7 @@ test('Size', (t) => {
 });
 
 test('Position', (t) => {
-    const p = makePoint(200, 200);
+    const p = makePosition(200, 200);
     t.equal(p.x, 200, 'should capture x coord');
     t.equal(p.y, 200, 'should capture y coord');
     t.end();
