@@ -23,7 +23,7 @@ export interface ITime {
  * @param total The total time in milliseconds
  * @param elapsed The elapsed time in milliseconds since previous frame
  */
-export function makeTime(total: number, elapsed = 0): ITime {
+export function time(total: number, elapsed = 0): ITime {
     return { elapsed, total };
 }
 
@@ -44,7 +44,7 @@ export interface IColor {
  * @param b Blue channel (0-255)
  * @param a [Optional] Alpha channel (0.0-1.0)
  */
-export function makeColor(r: number, g: number, b: number, a = 1): IColor {
+export function color(r: number, g: number, b: number, a = 1): IColor {
     return { a, b, g, r };
 }
 
@@ -69,7 +69,7 @@ export interface IPosition {
  * @param x X coordinate
  * @param y Y coordinate
  */
-export function makePosition(x: number, y: number): IPosition {
+export function position(x: number, y: number): IPosition {
     return { x, y };
 }
 
@@ -86,7 +86,7 @@ export interface ISize {
  * @param width width
  * @param height height
  */
-export function makeSize(width: number, height: number): ISize {
+export function size(width: number, height: number): ISize {
     return { width, height };
 }
 
@@ -96,15 +96,4 @@ export function makeSize(width: number, height: number): ISize {
 export interface ISketch {
     /** Stop running this sketch */
     stop: () => void;
-}
-
-/**
- *  Contextual information for a rendering frame
- */
-export interface IFrame {
-    /** Canvas rendering context for custom operations */
-    ctx: CanvasRenderingContext2D;
-
-    /** Time information about current frame */
-    time: ITime;
 }

@@ -1,22 +1,17 @@
 import * as R from 'ramda';
 import {
     Function,
-    IFrame,
     IPosition,
     ISketch,
     ITime,
-    makePosition,
-    makeTime,
+    position,
+    time,
 } from './types';
-
-function createFrame(ctx: CanvasRenderingContext2D, time: ITime) {
-    return { ctx, time };
-}
 
 export function startSketch(
     canvas: HTMLCanvasElement,
     setup: Function<CanvasRenderingContext2D, void>,
-    draw: Function<IFrame, void>,
+    draw: Function<ITime, void>,
 ): ISketch {
     this.ctx = canvas.getContext('2d');
     this.draw = draw;
@@ -28,7 +23,7 @@ export function startSketch(
             const currentTime = Date.now();
             const elapsedTime = currentTime - lastFrameTime;
             const totalTime = currentTime - beginningTime;
-            sketch.draw(createFrame(sketch.ctx, makeTime(totalTime, elapsedTime)));
+            sketch.draw(time(totalTime, elapsedTime));
 
             if (sketch.playing) {
                 window.requestAnimationFrame(loop(sketch, beginningTime, currentTime));
@@ -55,8 +50,8 @@ export function startSketch(
  * @returns A function that accepts the time properties of a sketch and returns a value in the range of [-1..1]
  */
 export function sinOsc(cycleLength: number): Function<ITime, number> {
-    return (time) => {
-        const phase = (time.total % cycleLength) / cycleLength;
+    return (t) => {
+        const phase = (t.total % cycleLength) / cycleLength;
         return Math.sin(2 * Math.PI * phase);
     };
 }
@@ -73,13 +68,13 @@ export function circularOrbit(
     radius: Function<ITime, number>,
     duration: number,
 ): Function<ITime, IPosition> {
-    return (time) => {
-        const p = center(time);
-        const r = radius(time);
-        const radians = ((time.total % duration) / duration) * 2 * Math.PI;
+    return (t) => {
+        const p = center(t);
+        const r = radius(t);
+        const radians = ((t.total % duration) / duration) * 2 * Math.PI;
         const xOffset = Math.sin(radians) * r;
         const yOffset = Math.cos(radians) * r;
-        return makePosition(p.x + xOffset, p.y + yOffset);
+        return position(p.x + xOffset, p.y + yOffset);
     };
 }
 

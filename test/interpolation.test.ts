@@ -1,6 +1,6 @@
 import * as test from 'tape';
 import { lerpColor, toPercentage } from '../src/interpolation';
-import { makeColor } from '../src/types';
+import { color } from '../src/types';
 
 test('Percentage conversion', (t) => {
     let fn = toPercentage(0, 200);
@@ -19,8 +19,8 @@ test('Percentage conversion', (t) => {
 });
 
 test('Color interpolation', (t) => {
-    const startColor = makeColor(200, 0, 200, 0);
-    const endColor = makeColor(0, 200, 0, 1);
+    const startColor = color(200, 0, 200, 0);
+    const endColor = color(0, 200, 0, 1);
 
     const interp = lerpColor(startColor, endColor)(0.5);
     t.equal(interp.r, 100, 'should interpolate red channel');

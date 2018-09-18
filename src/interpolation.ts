@@ -1,4 +1,4 @@
-import { Function, IColor, makeColor } from './types';
+import { color, Function, IColor } from './types';
 
 /**
  * Compresses a value within a given range to the percentage range of 0..1. Values outside
@@ -31,7 +31,7 @@ export function lerpColor(startColor: IColor, endColor: IColor): Function<number
     const diffA = endColor.a - startColor.a;
 
     return (lerp) => {
-        return makeColor(
+        return color(
             startColor.r + (diffR * lerp),
             startColor.g + (diffG * lerp),
             startColor.b + (diffB * lerp),

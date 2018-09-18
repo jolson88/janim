@@ -1,27 +1,18 @@
 const canvas = document.getElementById('myCanvas');
-const stopButton = document.getElementById('stopButton');
-const startButton = document.getElementById('startButton');
-let sk = J.startSketch(canvas, setup, draw);
+const ctx = canvas.getContext('2d');
+const sk = J.startSketch(canvas, setup, draw);
+const xOffset = R.pipe(J.sinOsc(3000), R.multiply(100));
 
-stopButton.addEventListener('click', () => {
-    sk.stop();
-});
-
-startButton.addEventListener('click', () => {
-    sk = J.startSketch(canvas, setup, draw);
-});
-
-function setup(ctx) {
-    J.clear(canvas, '#282828');
+function setup() {
+    J.clear(canvas, 'white');
 }
 
-function draw(frame) {
-    J.clear(canvas, '#282828');
-    const xOffset = R.pipe(J.sinOsc(3000), R.multiply(100));
-    frame.ctx.beginPath();
-    frame.ctx.fillStyle = 'red';
-    frame.ctx.fillRect(
-        canvas.width / 2 + xOffset(frame.time),
+function draw(time) {
+    J.clear(canvas, 'white');
+    ctx.beginPath();
+    ctx.fillStyle = 'red';
+    ctx.fillRect(
+        canvas.width / 2 + xOffset(time),
         canvas.height / 2,
         100,
         100
