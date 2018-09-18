@@ -1,2 +1,3 @@
-const fn = J.toPercentage(0, 200);
-console.log(fn(75));
+const canvas = document.getElementById('myCanvas');
+J.fill(canvas, 'rgb(40, 40, 40)');
+
