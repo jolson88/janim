@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import {
     color,
     Function,
@@ -48,6 +49,8 @@ export interface ITransform {
     position: TimeFunction<IPosition>;
     /** A function that, given the time, returns the size of the shape */
     size: TimeFunction<ISize>;
+    /** A function that, given the time, returns the rotation in radians */
+    rotation: TimeFunction<number>;
 }
 
 /**
@@ -134,8 +137,9 @@ export function startSketch(
 export function transform(
     pos: TimeFunction<IPosition>,
     size: TimeFunction<ISize>,
+    rotation: TimeFunction<number> = R.always(0),
 ): ITransform {
-    return { position: pos, size };
+    return { position: pos, size, rotation };
 }
 
 /**

@@ -72,7 +72,10 @@
 				<p>TODO</p>
 				<h3 id="time">Time</h3>
 				<p>At its core, the essence of Janim boils down to a single type of function: a function whose parameter is time (representing frame time and total time) and returns the position/size/etc. at that point in time.</p>
-				<pre><code class="language-typescript"></code></pre>
+				<pre><code class="language-typescript"><span class="hljs-comment">/**
+ * A function representing a value expressed over time
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> TimeFunction&lt;T&gt; = <span class="hljs-function">(<span class="hljs-params">time: ITime</span>) =&gt;</span> T;</code></pre>
 				<p>TODO</p>
 				<h3 id="styles">Styles</h3>
 				<p>TODO</p>
@@ -84,6 +87,7 @@
 
 <span class="hljs-keyword">const</span> xOffset = R.pipe(J.sinOsc(<span class="hljs-number">3000</span>), R.multiply(<span class="hljs-number">100</span>));
 <span class="hljs-keyword">const</span> sk = J.startSketch(canvas, setup, draw);
+<span class="hljs-comment">// Sketch can be stopped later via sk.stop();</span>
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
     J.clear(canvas, <span class="hljs-string">'white'</span>);
@@ -171,11 +175,26 @@
         J.fill(J.colorRotate(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">230</span>), J.color(<span class="hljs-number">230</span>, <span class="hljs-number">230</span>, <span class="hljs-number">0</span>), <span class="hljs-number">4000</span>))
     )
 );</code></pre>
+				<h3 id="custom-styles">Custom Styles</h3>
+				<p>A style is just a function that accepts the rendering context and a time. Because of this, it is quite easy to build your own custom styles using the context directly if you wish. There is no need to wait around until helpers are created in Janim.</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> moon = J.animatedEllipse(
+    canvas,
+    J.transform(
+        moonOrbit,
+        J.constant(J.size(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
+    ),
+    <span class="hljs-comment">/* New stuff here! */</span>
+    (ctx, time) =&gt; {
+        ctx.fillStyle = <span class="hljs-string">'red'</span>;
+        ctx.strokeStyle = <span class="hljs-string">'blue'</span>;
+    }
+);</code></pre>
 				<h2 id="open-issues">Open Issues</h2>
 				<p>There are still several areas that need to be explored in Janim:</p>
 				<ul>
 					<li>A source of events (in FRP sense) to capture how behaviors transition and change over time</li>
 					<li>Parity with Canvas rendering context functionality where applicable (like arcs and lines)</li>
+					<li>Pause/resume of a sketch (as opposed to just stop/start)</li>
 				</ul>
 			</div>
 		</div>
