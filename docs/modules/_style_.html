@@ -83,7 +83,9 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_style_.html#color" class="tsd-kind-icon">color</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_style_.html#colorrotate" class="tsd-kind-icon">color<wbr>Rotate</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_style_.html#fill" class="tsd-kind-icon">fill</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_style_.html#outline" class="tsd-kind-icon">outline</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_style_.html#style" class="tsd-kind-icon">style</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_style_.html#tocsscolor" class="tsd-kind-icon">to<wbr>Css<wbr>Color</a></li>
 							</ul>
 						</section>
@@ -98,7 +100,7 @@
 					<div class="tsd-signature tsd-kind-icon">Style<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jolson88/janim/blob/e8d69ca/src/style.ts#L7">style.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/style.ts#L7">style.ts:7</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -144,7 +146,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e8d69ca/src/style.ts#L26">style.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/style.ts#L26">style.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -193,7 +195,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e8d69ca/src/style.ts#L45">style.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/style.ts#L45">style.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -212,13 +214,13 @@
 								<li>
 									<h5>secondColor: <a href="../interfaces/_style_.icolor.html" class="tsd-signature-type">IColor</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>color to rotate to</p>
+										<p>color to move to</p>
 									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Amount of time, in milliseconds, it takes to switch between the colors</p>
+										<p>Amount of time, in milliseconds, it takes to switch between colors</p>
 									</div>
 								</li>
 							</ul>
@@ -228,40 +230,104 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="outline" class="tsd-anchor"></a>
-					<h3>outline</h3>
+					<a name="fill" class="tsd-anchor"></a>
+					<h3>fill</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">outline<span class="tsd-signature-symbol">(</span>thickness<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, c<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></li>
+						<li class="tsd-signature tsd-kind-icon">fill<span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e8d69ca/src/style.ts#L64">style.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/style.ts#L88">style.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Outlines shapes with solid outline and no fill</p>
+									<p>Fills an animated shape with a color</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>thickness: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The thickness of the line making the outline</p>
-									</div>
-								</li>
-								<li>
 									<h5>c: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Function that returns a color given the time</p>
+										<p>Function that returns the color given the time</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h4>
-							<p>Function that given the rendering context and time, configures the context style</p>
+							<p>Function that, given the rendering context and time, configures the context style</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="outline" class="tsd-anchor"></a>
+					<h3>outline</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">outline<span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, thickness<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/style.ts#L75">style.ts:75</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Outlines an animated shape with an outline</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>c: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Function that returns the color given the time</p>
+									</div>
+								</li>
+								<li>
+									<h5>thickness: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The thickness of the outline</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h4>
+							<p>Function that, given the rendering context and time, configures the context style</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="style" class="tsd-anchor"></a>
+					<h3>style</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">style<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>styles<span class="tsd-signature-symbol">: </span><a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/style.ts#L63">style.ts:63</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Applies a list of different styles to a given animated shape</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>styles: <a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of StyleFunctions to apply to the animated shape</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h4>
+							<p>A composite StyleFunction that can be passed to animated shapes</p>
 						</li>
 					</ul>
 				</section>
@@ -275,7 +341,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e8d69ca/src/style.ts#L34">style.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/style.ts#L34">style.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -333,7 +399,13 @@
 						<a href="_style_.html#colorrotate" class="tsd-kind-icon">color<wbr>Rotate</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_style_.html#fill" class="tsd-kind-icon">fill</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_style_.html#outline" class="tsd-kind-icon">outline</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_style_.html#style" class="tsd-kind-icon">style</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_style_.html#tocsscolor" class="tsd-kind-icon">to<wbr>Css<wbr>Color</a>

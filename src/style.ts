@@ -38,8 +38,8 @@ export function toCssColor(c: IColor): string {
 /**
  * Rotates back-and-forth between two colors over time
  * @param firstColor color to start with
- * @param secondColor color to rotate to
- * @param duration Amount of time, in milliseconds, it takes to switch between the colors
+ * @param secondColor color to move to
+ * @param duration Amount of time, in milliseconds, it takes to switch between colors
  * @returns Function that returns the current interpolated color when given the time
  */
 export function colorRotate(
@@ -56,14 +56,38 @@ export function colorRotate(
 }
 
 /**
- * Outlines shapes with solid outline and no fill
- * @param thickness The thickness of the line making the outline
- * @param c Function that returns a color given the time
- * @returns Function that given the rendering context and time, configures the context style
+ * Applies a list of different styles to a given animated shape
+ * @param styles List of StyleFunctions to apply to the animated shape
+ * @returns A composite StyleFunction that can be passed to animated shapes
  */
-export function outline(thickness: number, c: Function<ITime, string>): StyleFunction {
+export function style(...styles: StyleFunction[]): StyleFunction {
+    return (ctx, t) => {
+        R.forEach(R.partialRight(R.call, [ctx, t]), styles);
+    };
+}
+
+/**
+ * Outlines an animated shape with an outline
+ * @param c Function that returns the color given the time
+ * @param thickness The thickness of the outline
+ * @returns Function that, given the rendering context and time, configures the context style
+ */
+export function outline(c: Function<ITime, string>, thickness: number): StyleFunction {
     return (ctx, t) => {
         ctx.strokeStyle = c(t);
         ctx.lineWidth = thickness;
+        ctx.stroke();
+    };
+}
+
+/**
+ * Fills an animated shape with a color
+ * @param c Function that returns the color given the time
+ * @returns Function that, given the rendering context and time, configures the context style
+ */
+export function fill(c: Function<ITime, string>): StyleFunction {
+    return (ctx, t) => {
+        ctx.fillStyle = c(t);
+        ctx.fill();
     };
 }

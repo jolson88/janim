@@ -34,7 +34,6 @@ export function animatedEllipse(
             ctx.beginPath();
             ctx.ellipse(pos.x, pos.y, radii.width, radii.height, 0, 0, 2 * Math.PI);
             style(ctx, t);
-            ctx.stroke();
         } else {
             // Backup if Ellipse function is not provided (IE)
             ctx.save();
@@ -42,7 +41,6 @@ export function animatedEllipse(
             ctx.setTransform(1, 0, 0, radii.height / radii.width, pos.x, pos.y);
             ctx.arc(0, 0, radii.width, 0, 2 * Math.PI);
             style(ctx, t);
-            ctx.stroke();
             ctx.restore();
         }
     };
