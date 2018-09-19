@@ -1,4 +1,9 @@
-import { Function, IPosition, ISize, ITime, StyleFunction } from './janim';
+import {
+    Function,
+    ITime,
+    ITransform,
+    StyleFunction,
+} from './janim';
 
 /**
  * Clears the entire canvas with a given color
@@ -22,14 +27,13 @@ export function clear(canvas: HTMLCanvasElement, color: string): void {
  */
 export function animatedEllipse(
     canvas: HTMLCanvasElement,
-    size: Function<ITime, ISize>,
-    position: Function<ITime, IPosition>,
+    transform: ITransform,
     style: StyleFunction,
 ): Function<ITime, void> {
     const ctx = canvas.getContext('2d');
     return (t) => {
-        const pos = position(t);
-        const radii = size(t);
+        const pos = transform.position(t);
+        const radii = transform.size(t);
         if (ctx.ellipse) {
             ctx.beginPath();
             ctx.ellipse(pos.x, pos.y, radii.width, radii.height, 0, 0, 2 * Math.PI);

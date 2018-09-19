@@ -70,6 +70,7 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_animation_.isketch.html" class="tsd-kind-icon">ISketch</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_animation_.itransform.html" class="tsd-kind-icon">ITransform</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -80,6 +81,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_animation_.html#sinosc" class="tsd-kind-icon">sin<wbr>Osc</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_animation_.html#startsketch" class="tsd-kind-icon">start<wbr>Sketch</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_animation_.html#topercentage" class="tsd-kind-icon">to<wbr>Percentage</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_animation_.html#transform" class="tsd-kind-icon">transform</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,7 +99,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/animation.ts#L75">animation.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/d7f8898/src/animation.ts#L104">animation.ts:104</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -141,7 +143,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/animation.ts#L114">animation.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/d7f8898/src/animation.ts#L143">animation.ts:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -179,7 +181,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/animation.ts#L61">animation.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/d7f8898/src/animation.ts#L90">animation.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -211,19 +213,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/animation.ts#L20">animation.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/d7f8898/src/animation.ts#L49">animation.ts:49</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Start a new Janim sketch</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>canvas: <span class="tsd-signature-type">HTMLCanvasElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The canvas to draw the sketch on</p>
+									</div>
 								</li>
 								<li>
 									<h5>setup: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CanvasRenderingContext2D</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Function called to setup the sketch</p>
+									</div>
 								</li>
 								<li>
 									<h5>draw: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Function called to draw each sketch frame</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_animation_.isketch.html" class="tsd-signature-type">ISketch</a></h4>
@@ -240,7 +256,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/e66fc60/src/animation.ts#L97">animation.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/d7f8898/src/animation.ts#L126">animation.ts:126</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -266,6 +282,43 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A function that accepts the value to convert and returns the percentage</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="transform" class="tsd-anchor"></a>
+					<h3>transform</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">transform<span class="tsd-signature-symbol">(</span>pos<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span>, size<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/d7f8898/src/animation.ts#L36">animation.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates the transform that is applied to an animated shape</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pos: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The function that returns the position for a given time</p>
+									</div>
+								</li>
+								<li>
+									<h5>size: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The function that returns the size for a given time</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -296,6 +349,9 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_animation_.isketch.html" class="tsd-kind-icon">ISketch</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_animation_.itransform.html" class="tsd-kind-icon">ITransform</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_animation_.html#circularorbit" class="tsd-kind-icon">circular<wbr>Orbit</a>
 					</li>
@@ -310,6 +366,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_animation_.html#topercentage" class="tsd-kind-icon">to<wbr>Percentage</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_animation_.html#transform" class="tsd-kind-icon">transform</a>
 					</li>
 				</ul>
 			</nav>

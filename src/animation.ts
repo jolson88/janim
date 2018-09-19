@@ -3,6 +3,7 @@ import {
     Function,
     IColor,
     IPosition,
+    ISize,
     ISketch,
     ITime,
     position,
@@ -10,13 +11,41 @@ import {
 } from './janim';
 
 /**
- * A JAnim Sketch
+ * A Janim Sketch
  */
 export interface ISketch {
     /** Stop running this sketch */
     stop: () => void;
 }
 
+/**
+ * Object representing the transforms to apply to an animated shape
+ */
+export interface ITransform {
+    /** A function that, given the time, returns the position of the shape */
+    position: Function<ITime, IPosition>;
+    /** A function that, given the time, returns the size of the shape */
+    size: Function<ITime, ISize>;
+}
+
+/**
+ * Creates the transform that is applied to an animated shape
+ * @param pos The function that returns the position for a given time
+ * @param size The function that returns the size for a given time
+ */
+export function transform(
+    pos: Function<ITime, IPosition>,
+    size: Function<ITime, ISize>,
+): ITransform {
+    return { position: pos, size };
+}
+
+/**
+ * Start a new Janim sketch
+ * @param canvas The canvas to draw the sketch on
+ * @param setup Function called to setup the sketch
+ * @param draw Function called to draw each sketch frame
+ */
 export function startSketch(
     canvas: HTMLCanvasElement,
     setup: Function<CanvasRenderingContext2D, void>,

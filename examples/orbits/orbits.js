@@ -12,8 +12,10 @@ const moonOrbit = J.circularOrbit(planetOrbit, J.constant(60), 1000);
 
 const planet = J.animatedEllipse(
     canvas,
-    J.constant(J.size(40, 40)),
-    planetOrbit,
+    J.transform(
+        planetOrbit,
+        J.constant(J.size(40, 40))
+    ),
     J.style(
         J.outline(J.constant('black'), 3),
         J.fill(J.colorRotate(blue, yellow, 4000))
@@ -21,8 +23,10 @@ const planet = J.animatedEllipse(
 );
 const moon = J.animatedEllipse(
     canvas,
-    J.constant(J.size(10, 10)),
-    moonOrbit,
+    J.transform(
+        moonOrbit,
+        J.constant(J.size(10, 10))
+    ),
     J.style(
         J.outline(J.constant('black'), 3),
         J.fill(J.colorRotate(red, green, 4000))
