@@ -113,6 +113,41 @@ function draw(time) {
 }
 ```
 
+### Rotation
+You can rotate shapes as well. Similar to other transformations, rotation also supports animating the rotation value over time. If you wanted an ellipse that rotates back and forth (changing direction when it gets to the end), this can be modeled using the `sinOsc` function to a percentage of radians.
+
+```js
+const canvas = document.getElementById('myCanvas');
+const center = J.position(canvas.width / 2, canvas.height / 2);
+const sk = J.startSketch(canvas, setup, draw);
+
+// Create a rotation over time
+const rotator = R.pipe(J.sinOsc(4000), J.toPercentage(-1, 1), R.multiply(2 * Math.PI));
+
+const orbit = J.circularOrbit(J.constant(center), J.constant(200), 7000);
+const ellipse = J.animatedEllipse(
+    canvas,
+    J.transform(
+        orbit,
+        J.constant(J.size(80, 40)),
+        rotator // Pass the TimeFunction we created that returns the rotation
+    ),
+    J.style(
+        J.outline(J.constant('black'), 2),
+        J.fill(J.colorRotate(J.color(255, 0, 0), J.color(0, 255, 0), 2000))
+    )
+);
+
+function setup() {
+    J.clear(canvas, 'white');
+}
+
+function draw(time) {
+    J.clear(canvas, 'white');
+    ellipse(time);
+}
+```
+
 ### Composing styles together
 Styles can be composed together as well. We don't need to have something simple like a static outline. These styles can also change over time just like other concepts in Janim. For example, on top of a simple black border, we can also style the planet to change between red/blue and style the moon to change between green/yellow. This is done using a combo of `fill` and `colorRotate` functions combined with `outline` using the `style` combiner function:
 

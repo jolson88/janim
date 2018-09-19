@@ -37,7 +37,8 @@ const rect = J.animatedRect(
         J.outline(J.constant('black'), 2),
         J.fill(J.colorRotate(J.color(0, 0, 255), J.color(255, 255, 0), 2000))
     )
-)
+);
+
 function setup() {
     J.clear(canvas, 'white');
 }
