@@ -1,4 +1,4 @@
-import { Function, IPosition, ISize, ITime, StyleFunction } from './types';
+import { Function, IPosition, ISize, ITime, StyleFunction } from './janim';
 
 /**
  * Clears the entire canvas with a given color

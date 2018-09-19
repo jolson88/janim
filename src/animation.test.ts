@@ -1,7 +1,15 @@
 import * as test from 'tape';
-import { circularOrbit, constant, lerpColor, sinOsc, toPercentage } from '../src/animation';
-import { color, position, time } from '../src/types';
-import { nearEqual } from './helpers';
+import {
+    circularOrbit,
+    color,
+    constant,
+    lerpColor,
+    position,
+    sinOsc,
+    time,
+    toPercentage,
+} from './janim';
+import { nearEqual } from './testHelpers';
 
 test('Sine oscillation', (t) => {
     const fn = sinOsc(1000);

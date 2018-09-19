@@ -1,4 +1,3 @@
-import * as R from 'ramda';
 import {
     color,
     Function,
@@ -8,8 +7,15 @@ import {
     ITime,
     position,
     time,
-    toCssColor,
-} from './types';
+} from './janim';
+
+/**
+ * A JAnim Sketch
+ */
+export interface ISketch {
+    /** Stop running this sketch */
+    stop: () => void;
+}
 
 export function startSketch(
     canvas: HTMLCanvasElement,
@@ -82,15 +88,6 @@ export function circularOrbit(
 }
 
 /**
- * Always return a constant value no matter what parameter is passed to returning function
- * @param val Constant value to return from function
- * @returns Function that ignores the parameter passed and always returns specified value
- */
-export function constant<T>(val: T): Function<ITime, T> {
-    return R.always(val);
-}
-
-/**
  * Compresses a value within a given range to the percentage range of 0..1. Values outside
  * of the range will be converted to either 0 (less than min) or 1 (more than max).
  * @param rangeMin The minimum value of the range
@@ -128,24 +125,4 @@ export function lerpColor(startColor: IColor, endColor: IColor): Function<number
             startColor.a + (diffA * lerp),
         );
     };
-}
-
-/**
- * Rotates back-and-forth between two colors over time
- * @param firstColor color to start with
- * @param secondColor color to rotate to
- * @param duration Amount of time, in milliseconds, it takes to switch between the colors
- * @returns Function that returns the current interpolated color when given the time
- */
-export function colorRotate(
-    firstColor: IColor,
-    secondColor: IColor,
-    duration: number,
-): Function<ITime, string> {
-    return R.pipe(
-        sinOsc(duration),
-        toPercentage(-1.0, 1.0),
-        lerpColor(firstColor, secondColor),
-        toCssColor,
-    );
 }
