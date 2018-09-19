@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ISketch | janim</title>
+	<title>RectMode | janim</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_animation_.html">&quot;animation&quot;</a>
+					<a href="../modules/_shapes_.html">&quot;shapes&quot;</a>
 				</li>
 				<li>
-					<a href="_animation_.isketch.html">ISketch</a>
+					<a href="_shapes_.rectmode.html">RectMode</a>
 				</li>
 			</ul>
-			<h1>Interface ISketch</h1>
+			<h1>Enumeration RectMode</h1>
 		</div>
 	</div>
 </header>
@@ -68,62 +68,45 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A Janim Sketch</p>
+						<p>Specifies the interpretation of the rectangle&#39;s position</p>
 					</div>
 				</div>
-			</section>
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">ISketch</span>
-					</li>
-				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_animation_.isketch.html#stop" class="tsd-kind-icon">stop</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_shapes_.rectmode.html#center" class="tsd-kind-icon">Center</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_shapes_.rectmode.html#corner" class="tsd-kind-icon">Corner</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="stop" class="tsd-anchor"></a>
-					<h3>stop</h3>
-					<div class="tsd-signature tsd-kind-icon">stop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+				<h2>Enumeration members</h2>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="center" class="tsd-anchor"></a>
+					<h3>Center</h3>
+					<div class="tsd-signature tsd-kind-icon">Center<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;1</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jolson88/janim/blob/3ff1b38/src/animation.ts#L41">animation.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/3ff1b38/src/shapes.ts#L97">shapes.ts:97</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Stop running this sketch</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-									</li>
-								</ul>
-							</li>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="corner" class="tsd-anchor"></a>
+					<h3>Corner</h3>
+					<div class="tsd-signature tsd-kind-icon">Corner<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/3ff1b38/src/shapes.ts#L96">shapes.ts:96</a></li>
 						</ul>
-					</div>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -133,13 +116,13 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_animation_.html">"animation"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_core_.html">"core"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_shapes_.html">"shapes"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -151,36 +134,27 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_animation_.isketch.html" class="tsd-kind-icon">ISketch</a>
+					<li class="current tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="_shapes_.rectmode.html" class="tsd-kind-icon">Rect<wbr>Mode</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_animation_.isketch.html#stop" class="tsd-kind-icon">stop</a>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_shapes_.rectmode.html#center" class="tsd-kind-icon">Center</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_shapes_.rectmode.html#corner" class="tsd-kind-icon">Corner</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_animation_.itransform.html" class="tsd-kind-icon">ITransform</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_shapes_.html#animatedellipse" class="tsd-kind-icon">animated<wbr>Ellipse</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#circularorbit" class="tsd-kind-icon">circular<wbr>Orbit</a>
+						<a href="../modules/_shapes_.html#animatedrect" class="tsd-kind-icon">animated<wbr>Rect</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#lerpcolor" class="tsd-kind-icon">lerp<wbr>Color</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#sinosc" class="tsd-kind-icon">sin<wbr>Osc</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#startsketch" class="tsd-kind-icon">start<wbr>Sketch</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#topercentage" class="tsd-kind-icon">to<wbr>Percentage</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#transform" class="tsd-kind-icon">transform</a>
+						<a href="../modules/_shapes_.html#clear" class="tsd-kind-icon">clear</a>
 					</li>
 				</ul>
 			</nav>

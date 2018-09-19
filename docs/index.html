@@ -148,6 +148,37 @@
     planet(time);
     moon(time);
 }</code></pre>
+				<h3 id="rotation">Rotation</h3>
+				<p>You can rotate shapes as well. Similar to other transformations, rotation also supports animating the rotation value over time. If you wanted an ellipse that rotates back and forth (changing direction when it gets to the end), this can be modeled using the <code>sinOsc</code> function to a percentage of radians.</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myCanvas'</span>);
+<span class="hljs-keyword">const</span> center = J.position(canvas.width / <span class="hljs-number">2</span>, canvas.height / <span class="hljs-number">2</span>);
+<span class="hljs-keyword">const</span> sk = J.startSketch(canvas, setup, draw);
+
+<span class="hljs-comment">// Create a rotation over time</span>
+<span class="hljs-keyword">const</span> rotator = R.pipe(J.sinOsc(<span class="hljs-number">4000</span>), J.toPercentage(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>), R.multiply(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI));
+
+<span class="hljs-keyword">const</span> orbit = J.circularOrbit(J.constant(center), J.constant(<span class="hljs-number">200</span>), <span class="hljs-number">7000</span>);
+<span class="hljs-keyword">const</span> ellipse = J.animatedEllipse(
+    canvas,
+    J.transform(
+        orbit,
+        J.constant(J.size(<span class="hljs-number">80</span>, <span class="hljs-number">40</span>)),
+        rotator <span class="hljs-comment">// Pass the TimeFunction we created that returns the rotation</span>
+    ),
+    J.style(
+        J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">2</span>),
+        J.fill(J.colorRotate(J.color(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), J.color(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">2000</span>))
+    )
+);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
+    J.clear(canvas, <span class="hljs-string">'white'</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params">time</span>) </span>{
+    J.clear(canvas, <span class="hljs-string">'white'</span>);
+    ellipse(time);
+}</code></pre>
 				<h3 id="composing-styles-together">Composing styles together</h3>
 				<p>Styles can be composed together as well. We don&#39;t need to have something simple like a static outline. These styles can also change over time just like other concepts in Janim. For example, on top of a simple black border, we can also style the planet to change between red/blue and style the moon to change between green/yellow. This is done using a combo of <code>fill</code> and <code>colorRotate</code> functions combined with <code>outline</code> using the <code>style</code> combiner function:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> planet = J.animatedEllipse(

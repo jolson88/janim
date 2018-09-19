@@ -45,23 +45,34 @@ export function animatedEllipse(
  * @param canvas The canvas to draw the shape on
  * @param transform A set of transforms that determine the position, size, and rotation of the shape
  * @param style A function that, given the time, styles the shape as specified
+ * @param mode [Optional] Specifies whether the position indicates the top-left corner or the center of the rectangle
  * @returns Function that accepts the current point in time and draws the ellipse
  */
 export function animatedRect(
     canvas: HTMLCanvasElement,
     transform: ITransform,
     style: StyleFunction,
+    mode: RectMode = RectMode.Corner,
 ): TimeFunction<void> {
     const ctx = canvas.getContext('2d');
     return (t) => {
         const pos = transform.position(t);
         const size = transform.size(t);
         const rotation = transform.rotation(t);
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.beginPath();
-        ctx.translate(pos.x + (size.width / 2), pos.y + (size.height / 2));
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        if (mode === RectMode.Corner) {
+            ctx.translate(pos.x + (size.width / 2), pos.y + (size.height / 2));
+        } else {
+            ctx.translate(pos.x, pos.y);
+        }
         ctx.rotate(rotation);
-        ctx.rect(-(size.width / 2), -(size.height / 2), size.width, size.height);
+        ctx.rect(
+            -(size.width / 2),
+            -(size.height / 2),
+            size.width,
+            size.height,
+        );
         style(ctx, t);
         ctx.setTransform(1, 0, 0, 1, 0, 0);
     };
@@ -76,4 +87,12 @@ export function clear(canvas: HTMLCanvasElement, color: string): void {
     ctx.beginPath();
     ctx.fillStyle = color;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+/**
+ * Specifies the interpretation of the rectangle's position
+ */
+export enum RectMode {
+    Corner = 0,
+    Center = 1,
 }
