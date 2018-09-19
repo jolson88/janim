@@ -2,21 +2,6 @@ import * as R from 'ramda';
 import { Function, ITime, lerpColor, sinOsc, toPercentage } from './janim';
 
 /**
- * A function for setting the style of an animated shape
- */
-export type StyleFunction = (ctx: CanvasRenderingContext2D, t: ITime) => void;
-
-/**
- * Color represented by four channels: red, green, blue, and alpha.
- */
-export interface IColor {
-    r: number;
-    g: number;
-    b: number;
-    a: number;
-}
-
-/**
  * Creates an object representing standard four-channel color value
  * @param r Red channel (0-255)
  * @param g Green channel (0-255)
@@ -25,14 +10,6 @@ export interface IColor {
  */
 export function color(r: number, g: number, b: number, a = 1): IColor {
     return { a, b, g, r };
-}
-
-/**
- * Converts a four-channel color value to a standard CSS color string
- * @param c The four-channel color value
- */
-export function toCssColor(c: IColor): string {
-    return `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a})`;
 }
 
 /**
@@ -56,14 +33,25 @@ export function colorRotate(
 }
 
 /**
- * Applies a list of different styles to a given animated shape
- * @param styles List of StyleFunctions to apply to the animated shape
- * @returns A composite StyleFunction that can be passed to animated shapes
+ * Fills an animated shape with a color
+ * @param c Function that returns the color given the time
+ * @returns Function that, given the rendering context and time, configures the context style
  */
-export function style(...styles: StyleFunction[]): StyleFunction {
+export function fill(c: Function<ITime, string>): StyleFunction {
     return (ctx, t) => {
-        R.forEach(R.partialRight(R.call, [ctx, t]), styles);
+        ctx.fillStyle = c(t);
+        ctx.fill();
     };
+}
+
+/**
+ * Color represented by four channels: red, green, blue, and alpha.
+ */
+export interface IColor {
+    r: number;
+    g: number;
+    b: number;
+    a: number;
 }
 
 /**
@@ -81,13 +69,25 @@ export function outline(c: Function<ITime, string>, thickness: number): StyleFun
 }
 
 /**
- * Fills an animated shape with a color
- * @param c Function that returns the color given the time
- * @returns Function that, given the rendering context and time, configures the context style
+ * Applies a list of different styles to a given animated shape
+ * @param styles List of StyleFunctions to apply to the animated shape
+ * @returns A composite StyleFunction that can be passed to animated shapes
  */
-export function fill(c: Function<ITime, string>): StyleFunction {
+export function style(...styles: StyleFunction[]): StyleFunction {
     return (ctx, t) => {
-        ctx.fillStyle = c(t);
-        ctx.fill();
+        R.forEach(R.partialRight(R.call, [ctx, t]), styles);
     };
+}
+
+/**
+ * A function for setting the style of an animated shape
+ */
+export type StyleFunction = (ctx: CanvasRenderingContext2D, t: ITime) => void;
+
+/**
+ * Converts a four-channel color value to a standard CSS color string
+ * @param c The four-channel color value
+ */
+export function toCssColor(c: IColor): string {
+    return `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a})`;
 }

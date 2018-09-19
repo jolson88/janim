@@ -11,6 +11,28 @@ import {
 } from './janim';
 
 /**
+ * Creates a circular orbit that returns an orbital position for any given time
+ * @param center A function that, given the time, returns the center position at that time
+ * @param radius A function that, given the time, returns the radius at that time
+ * @param duration The duration in milliseconds of the orbit
+ * @returns A function that, given the time, returns the position at that time
+ */
+export function circularOrbit(
+    center: Function<ITime, IPosition>,
+    radius: Function<ITime, number>,
+    duration: number,
+): Function<ITime, IPosition> {
+    return (t) => {
+        const p = center(t);
+        const r = radius(t);
+        const radians = ((t.total % duration) / duration) * 2 * Math.PI;
+        const xOffset = Math.sin(radians) * r;
+        const yOffset = Math.cos(radians) * r;
+        return position(p.x + xOffset, p.y + yOffset);
+    };
+}
+
+/**
  * A Janim Sketch
  */
 export interface ISketch {
@@ -29,15 +51,37 @@ export interface ITransform {
 }
 
 /**
- * Creates the transform that is applied to an animated shape
- * @param pos The function that returns the position for a given time
- * @param size The function that returns the size for a given time
+ * Calculates an interpolated color between the start color and end color
+ * @param startColor The first color to be interpolated between
+ * @param endColor The second color to be interpolated between
+ * @returns Function that accepts an interpolation percentage between 0..1 and returns a color
  */
-export function transform(
-    pos: Function<ITime, IPosition>,
-    size: Function<ITime, ISize>,
-): ITransform {
-    return { position: pos, size };
+export function lerpColor(startColor: IColor, endColor: IColor): Function<number, IColor> {
+    const diffR = endColor.r - startColor.r;
+    const diffG = endColor.g - startColor.g;
+    const diffB = endColor.b - startColor.b;
+    const diffA = endColor.a - startColor.a;
+
+    return (lerp) => {
+        return color(
+            startColor.r + (diffR * lerp),
+            startColor.g + (diffG * lerp),
+            startColor.b + (diffB * lerp),
+            startColor.a + (diffA * lerp),
+        );
+    };
+}
+
+/**
+ * An oscillator that uses the sin function to calculate its values
+ * @param cycleLength The time in milliseconds until the oscillator repeats
+ * @returns A function that accepts the time properties of a sketch and returns a value in the range of [-1..1]
+ */
+export function sinOsc(cycleLength: number): Function<ITime, number> {
+    return (t) => {
+        const phase = (t.total % cycleLength) / cycleLength;
+        return Math.sin(2 * Math.PI * phase);
+    };
 }
 
 /**
@@ -83,37 +127,15 @@ export function startSketch(
 }
 
 /**
- * An oscillator that uses the sin function to calculate its values
- * @param cycleLength The time in milliseconds until the oscillator repeats
- * @returns A function that accepts the time properties of a sketch and returns a value in the range of [-1..1]
+ * Creates the transform that is applied to an animated shape
+ * @param pos The function that returns the position for a given time
+ * @param size The function that returns the size for a given time
  */
-export function sinOsc(cycleLength: number): Function<ITime, number> {
-    return (t) => {
-        const phase = (t.total % cycleLength) / cycleLength;
-        return Math.sin(2 * Math.PI * phase);
-    };
-}
-
-/**
- * Creates a circular orbit that returns an orbital position for any given time
- * @param center A function that, given the time, returns the center position at that time
- * @param radius A function that, given the time, returns the radius at that time
- * @param duration The duration in milliseconds of the orbit
- * @returns A function that, given the time, returns the position at that time
- */
-export function circularOrbit(
-    center: Function<ITime, IPosition>,
-    radius: Function<ITime, number>,
-    duration: number,
-): Function<ITime, IPosition> {
-    return (t) => {
-        const p = center(t);
-        const r = radius(t);
-        const radians = ((t.total % duration) / duration) * 2 * Math.PI;
-        const xOffset = Math.sin(radians) * r;
-        const yOffset = Math.cos(radians) * r;
-        return position(p.x + xOffset, p.y + yOffset);
-    };
+export function transform(
+    pos: Function<ITime, IPosition>,
+    size: Function<ITime, ISize>,
+): ITransform {
+    return { position: pos, size };
 }
 
 /**
@@ -131,27 +153,5 @@ export function toPercentage(rangeMin: number, rangeMax: number): Function<numbe
         }
         const diff = val - rangeMin;
         return diff / totalRange;
-    };
-}
-
-/**
- * Calculates an interpolated color between the start color and end color
- * @param startColor The first color to be interpolated between
- * @param endColor The second color to be interpolated between
- * @returns Function that accepts an interpolation percentage between 0..1 and returns a color
- */
-export function lerpColor(startColor: IColor, endColor: IColor): Function<number, IColor> {
-    const diffR = endColor.r - startColor.r;
-    const diffG = endColor.g - startColor.g;
-    const diffB = endColor.b - startColor.b;
-    const diffA = endColor.a - startColor.a;
-
-    return (lerp) => {
-        return color(
-            startColor.r + (diffR * lerp),
-            startColor.g + (diffG * lerp),
-            startColor.b + (diffB * lerp),
-            startColor.a + (diffA * lerp),
-        );
     };
 }
