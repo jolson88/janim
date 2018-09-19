@@ -70,6 +70,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_shapes_.html#animatedellipse" class="tsd-kind-icon">animated<wbr>Ellipse</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_shapes_.html#animatedrect" class="tsd-kind-icon">animated<wbr>Rect</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_shapes_.html#clear" class="tsd-kind-icon">clear</a></li>
 							</ul>
 						</section>
@@ -88,7 +89,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/302d3c8/src/shapes.ts#L16">shapes.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/90a989e/src/shapes.ts#L16">shapes.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -101,7 +102,51 @@
 								<li>
 									<h5>canvas: <span class="tsd-signature-type">HTMLCanvasElement</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The canvas to draw the ellipse on</p>
+										<p>The canvas to draw the shape on</p>
+									</div>
+								</li>
+								<li>
+									<h5>transform: <a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A set of transforms that determine the position, size, and rotation of the shape</p>
+									</div>
+								</li>
+								<li>
+									<h5>style: <a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A function that, given the time, styles the shape as specified</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Function that accepts the current point in time and draws the ellipse</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="animatedrect" class="tsd-anchor"></a>
+					<h3>animated<wbr>Rect</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">animated<wbr>Rect<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, transform<span class="tsd-signature-symbol">: </span><a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a>, style<span class="tsd-signature-symbol">: </span><a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/90a989e/src/shapes.ts#L50">shapes.ts:50</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a rectangle that is animated over time</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>canvas: <span class="tsd-signature-type">HTMLCanvasElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The canvas to draw the shape on</p>
 									</div>
 								</li>
 								<li>
@@ -132,7 +177,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/302d3c8/src/shapes.ts#L48">shapes.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/90a989e/src/shapes.ts#L74">shapes.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -185,6 +230,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_shapes_.html#animatedellipse" class="tsd-kind-icon">animated<wbr>Ellipse</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_shapes_.html#animatedrect" class="tsd-kind-icon">animated<wbr>Rect</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_shapes_.html#clear" class="tsd-kind-icon">clear</a>

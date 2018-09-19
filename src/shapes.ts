@@ -8,7 +8,7 @@ import {
 
 /**
  * Creates an ellipse that is animated over time
- * @param canvas The canvas to draw the ellipse on
+ * @param canvas The canvas to draw the shape on
  * @param transform A set of transforms that determine the position, size, and rotation of the shape
  * @param style A function that, given the time, styles the shape as specified
  * @returns Function that accepts the current point in time and draws the ellipse
@@ -40,6 +40,32 @@ export function animatedEllipse(
     };
 }
 
+/**
+ * Creates a rectangle that is animated over time
+ * @param canvas The canvas to draw the shape on
+ * @param transform A set of transforms that determine the position, size, and rotation of the shape
+ * @param style A function that, given the time, styles the shape as specified
+ * @returns Function that accepts the current point in time and draws the ellipse
+ */
+export function animatedRect(
+    canvas: HTMLCanvasElement,
+    transform: ITransform,
+    style: StyleFunction,
+): TimeFunction<void> {
+    const ctx = canvas.getContext('2d');
+    return (t) => {
+        const pos = transform.position(t);
+        const size = transform.size(t);
+        const rotation = transform.rotation(t);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.beginPath();
+        ctx.translate(pos.x + (size.width / 2), pos.y + (size.height / 2));
+        ctx.rotate(rotation);
+        ctx.rect(-(size.width / 2), -(size.height / 2), size.width, size.height);
+        style(ctx, t);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+    };
+}
 /**
  * Clears the entire canvas with a given color
  * @param canvas The canvas to fill
