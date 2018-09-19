@@ -5,7 +5,7 @@ import * as R from 'ramda';
  * @param val Constant value to return from function
  * @returns Function that ignores the parameter passed and always returns specified value
  */
-export function constant<T>(val: T): Function<ITime, T> {
+export function constant<T>(val: T): TimeFunction<T> {
     return R.always(val);
 }
 
@@ -13,6 +13,11 @@ export function constant<T>(val: T): Function<ITime, T> {
  * A simple unary function
  */
 export type Function<T, U> = (arg: T) => U;
+
+/**
+ * A function representing a value expressed over time
+ */
+export type TimeFunction<T> = (time: ITime) => T;
 
 /**
  * A point in space represented by x and y coordinates

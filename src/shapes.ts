@@ -1,8 +1,7 @@
 import {
-    Function,
-    ITime,
     ITransform,
     StyleFunction,
+    TimeFunction,
 } from './janim';
 
 /**
@@ -17,7 +16,7 @@ export function animatedEllipse(
     canvas: HTMLCanvasElement,
     transform: ITransform,
     style: StyleFunction,
-): Function<ITime, void> {
+): TimeFunction<void> {
     const ctx = canvas.getContext('2d');
     return (t) => {
         const pos = transform.position(t);

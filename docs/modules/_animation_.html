@@ -93,13 +93,13 @@
 					<a name="circularorbit" class="tsd-anchor"></a>
 					<h3>circular<wbr>Orbit</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">circular<wbr>Orbit<span class="tsd-signature-symbol">(</span>center<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span>, radius<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">circular<wbr>Orbit<span class="tsd-signature-symbol">(</span>center<span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span>, radius<span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/1687cb6/src/animation.ts#L20">animation.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/24c99d5/src/animation.ts#L20">animation.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -110,13 +110,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>center: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>center: <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A function that, given the time, returns the center position at that time</p>
 									</div>
 								</li>
 								<li>
-									<h5>radius: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>radius: <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A function that, given the time, returns the radius at that time</p>
 									</div>
@@ -128,7 +128,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A function that, given the time, returns the position at that time</p>
 						</li>
 					</ul>
@@ -143,7 +143,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/1687cb6/src/animation.ts#L59">animation.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/24c99d5/src/animation.ts#L59">animation.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -175,13 +175,13 @@
 					<a name="sinosc" class="tsd-anchor"></a>
 					<h3>sin<wbr>Osc</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">sin<wbr>Osc<span class="tsd-signature-symbol">(</span>cycleLength<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">sin<wbr>Osc<span class="tsd-signature-symbol">(</span>cycleLength<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/1687cb6/src/animation.ts#L80">animation.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/24c99d5/src/animation.ts#L80">animation.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -198,7 +198,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A function that accepts the time properties of a sketch and returns a value in the range of [-1..1]</p>
 						</li>
 					</ul>
@@ -207,13 +207,13 @@
 					<a name="startsketch" class="tsd-anchor"></a>
 					<h3>start<wbr>Sketch</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">start<wbr>Sketch<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, setup<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CanvasRenderingContext2D</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span>, draw<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_animation_.isketch.html" class="tsd-signature-type">ISketch</a></li>
+						<li class="tsd-signature tsd-kind-icon">start<wbr>Sketch<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, setup<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CanvasRenderingContext2D</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span>, draw<span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_animation_.isketch.html" class="tsd-signature-type">ISketch</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/1687cb6/src/animation.ts#L93">animation.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/24c99d5/src/animation.ts#L93">animation.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -236,7 +236,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>draw: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>draw: <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Function called to draw each sketch frame</p>
 									</div>
@@ -256,7 +256,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/1687cb6/src/animation.ts#L148">animation.ts:148</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/24c99d5/src/animation.ts#L148">animation.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -289,13 +289,13 @@
 					<a name="transform" class="tsd-anchor"></a>
 					<h3>transform</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">transform<span class="tsd-signature-symbol">(</span>pos<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span>, size<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a></li>
+						<li class="tsd-signature tsd-kind-icon">transform<span class="tsd-signature-symbol">(</span>pos<span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span>, size<span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/1687cb6/src/animation.ts#L134">animation.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/24c99d5/src/animation.ts#L134">animation.ts:134</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -306,13 +306,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>pos: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>pos: <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The function that returns the position for a given time</p>
 									</div>
 								</li>
 								<li>
-									<h5>size: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.itime.html" class="tsd-signature-type">ITime</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_core_.isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>size: <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_core_.isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The function that returns the size for a given time</p>
 									</div>

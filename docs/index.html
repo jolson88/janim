@@ -60,9 +60,123 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="wip-janim">WIP - janim</h1>
-				<p>WIP - A lightweight, FP-based, Processing-inspired 2d creative coding library for developers. This library leverages as many built-in concepts and APIs in HTML5 (e.g. canvas, css colors, etc.).</p>
-				<p>Currently, this project is a proof-of-concept for some personal coding projects. But I inteded to grow it into a library for others to use as it matures.</p>
+				<h1 id="wip-janim">WIP - Janim</h1>
+				<p>Janim is a lightweight, Functional Programming based, Processing-inspired 2d creative coding library for developers. This library leverages as many built-in concepts and APIs in HTML5 (e.g. canvas, css colors, etc.) as possible.</p>
+				<h2 id="goals">Goals</h2>
+				<p><strong>Minimalist</strong>. Janim aims to provide a minimal API surface whose power comes through the composition of its primitives, not by providing a large API that does everything under the sun in its own way. We are surrounded by frameworks that you have to &quot;buy into&quot; and largely write your application in the context of that framework. Many frameworks are too big and bulky for their own good. Their size and learning curves provide obstacles to leveraging them. Janim aims to rectify this by minimizing its own API surface and addressing the essential complexity of visual creative coding: understanding time and how behaviors change over time.</p>
+				<p><strong>Getting out of the developer&#39;s way</strong>. By leveraging built-in HTML 5 functionality (like the Canvas, simple Css colors, event handlers, etc.) and simple &quot;escape hatches&quot;, Janim lets developers write any 2d visualization code they can imagine without Janim needing to provide functionality for any possible scenario under the sun.</p>
+				<p><strong>A library for developers</strong>. Popular creative coding frameworks like Processing are extremely powerful and very friendly to beginners. However, being a developer used to modern programming languages, they can also be very limiting as powerful programming concepts like function composition are absent and make it more difficult to build robust and composable visualizations. By using a standard programming language like JavaScript to its fullest, Janim provides a way to think and write animation code that can scale as the project becomes larger.</p>
+				<p><strong>Showing the power of Functional Programming</strong>. This project started as an exercise in functional programming. Janim was inspired by a combination of Conal Elliott&#39;s and Paul Hudak&#39;s original Functional Reactive Programming paper and the joy of Processing. Fundamentally, the core domain concept that makes animation difficult to wrestle with is time and behaviors that change over time. Functional programming, especially a drive for function composition, is incredibly powerful to capture the complexity of animating shapes over time. Janim serves to provide a fun visual example of the power of function composition and functional programming for developers to play around with.</p>
+				<h2 id="concepts">Concepts</h2>
+				<p>Getting familiar with functional programming and higher-order functions can be difficult to wrap your head around if you aren&#39;t experienced with it. This can make the initial learning curve more difficult for developers who aren&#39;t familiar with functional programming. However, on the other side of that learning curve lies a land of fun.</p>
+				<p>TODO</p>
+				<h3 id="time">Time</h3>
+				<p>At its core, the essence of Janim boils down to a single type of function: a function whose parameter is time (representing frame time and total time) and returns the position/size/etc. at that point in time.</p>
+				<pre><code class="language-typescript"></code></pre>
+				<p>TODO</p>
+				<h3 id="styles">Styles</h3>
+				<p>TODO</p>
+				<h2 id="examples">Examples</h2>
+				<h3 id="a-simple-sketch">A simple sketch</h3>
+				<p>This example shows a simple red box that moves right and left in time. It also shows how a developer can use the canvas context directly to do any drawing they wish and don&#39;t need to rely on all drawing primitives being included in Janim.</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myCanvas'</span>);
+<span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>);
+
+<span class="hljs-keyword">const</span> xOffset = R.pipe(J.sinOsc(<span class="hljs-number">3000</span>), R.multiply(<span class="hljs-number">100</span>));
+<span class="hljs-keyword">const</span> sk = J.startSketch(canvas, setup, draw);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
+    J.clear(canvas, <span class="hljs-string">'white'</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params">time</span>) </span>{
+    J.clear(canvas, <span class="hljs-string">'white'</span>);
+    ctx.fillStyle = <span class="hljs-string">'red'</span>;
+    ctx.fillRect(
+        canvas.width / <span class="hljs-number">2</span> + xOffset(time),
+        canvas.height / <span class="hljs-number">2</span>,
+        <span class="hljs-number">100</span>,
+        <span class="hljs-number">100</span>
+    );
+}</code></pre>
+				<h3 id="animating-shapes">Animating shapes</h3>
+				<p>Let&#39;s create a circle that orbits around the center of the canvas. It takes 7 seconds (7000 milliseconds) to complete its orbit.</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myCanvas'</span>);
+<span class="hljs-keyword">const</span> center = J.position(canvas.width / <span class="hljs-number">2</span>, canvas.height / <span class="hljs-number">2</span>);
+<span class="hljs-keyword">const</span> sk = J.startSketch(canvas, setup, draw);
+
+<span class="hljs-keyword">const</span> planetOrbit = J.circularOrbit(J.constant(center), J.constant(<span class="hljs-number">200</span>), <span class="hljs-number">7000</span>);
+<span class="hljs-keyword">const</span> planet = J.animatedEllipse(
+    canvas,
+    J.transform(
+        planetOrbit,
+        J.constant(J.size(<span class="hljs-number">40</span>, <span class="hljs-number">40</span>))
+    ),
+    J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">2</span>)
+);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
+    J.clear(canvas, <span class="hljs-string">'white'</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params">time</span>) </span>{
+    J.clear(canvas, <span class="hljs-string">'white'</span>);
+    planet(time);
+}</code></pre>
+				<p>You can see how declarative this approach is. Instead of focusing on imperative code in our <code>draw</code> function that is calculating how each frame is rendered, we&#39;ve declared the behavior we want over time with the orbit and simply give the planet the current frame time to draw it.</p>
+				<p>As animation is done via higher-order functions, they can easily be composed together to build more complex animations. For example, we can create a new orbit for a moon that orbits around the planet. Notice how the moon&#39;s orbit position parameter is actually the planet&#39;s orbit itself. This means that at any given time, the moon&#39;s position is determined by the planet&#39;s position and will change over time as well so the two are kept &quot;in sync&quot; with each other.</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> moonOrbit = J.circularOrbit(planetOrbit, J.constant(<span class="hljs-number">60</span>), <span class="hljs-number">1000</span>);
+<span class="hljs-keyword">const</span> moon = J.animatedEllipse(
+    canvas,
+    J.transform(
+        moonOrbit,
+        J.constant(J.size(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
+    ),
+    J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">2</span>)
+);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
+    J.clear(canvas, <span class="hljs-string">'white'</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params">time</span>) </span>{
+    J.clear(canvas, <span class="hljs-string">'white'</span>);
+    planet(time);
+    moon(time);
+}</code></pre>
+				<h3 id="composing-styles-together">Composing styles together</h3>
+				<p>Styles can be composed together as well. We don&#39;t need to have something simple like a static outline. These styles can also change over time just like other concepts in Janim. For example, on top of a simple black border, we can also style the planet to change between red/blue and style the moon to change between green/yellow. This is done using a combo of <code>fill</code> and <code>colorRotate</code> functions combined with <code>outline</code> using the <code>style</code> combiner function:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> planet = J.animatedEllipse(
+    canvas,
+    J.transform(
+        planetOrbit,
+        J.constant(J.size(<span class="hljs-number">40</span>, <span class="hljs-number">40</span>))
+    ),
+    <span class="hljs-comment">/* New stuff here! */</span>
+    J.style(
+        J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">2</span>),
+        J.fill(J.colorRotate(J.color(<span class="hljs-number">230</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), J.color(<span class="hljs-number">0</span>, <span class="hljs-number">230</span>, <span class="hljs-number">0</span>), <span class="hljs-number">4000</span>))
+    )
+);
+
+<span class="hljs-keyword">const</span> moon = J.animatedEllipse(
+    canvas,
+    J.transform(
+        moonOrbit,
+        J.constant(J.size(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
+    ),
+    <span class="hljs-comment">/* New stuff here! */</span>
+    J.style(
+        J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">3</span>),
+        J.fill(J.colorRotate(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">230</span>), J.color(<span class="hljs-number">230</span>, <span class="hljs-number">230</span>, <span class="hljs-number">0</span>), <span class="hljs-number">4000</span>))
+    )
+);</code></pre>
+				<h2 id="open-issues">Open Issues</h2>
+				<p>There are still several areas that need to be explored in Janim:</p>
+				<ul>
+					<li>A source of events (in FRP sense) to capture how behaviors transition and change over time</li>
+					<li>Parity with Canvas rendering context functionality where applicable (like arcs and lines)</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

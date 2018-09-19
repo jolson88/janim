@@ -5,9 +5,9 @@ import {
     IPosition,
     ISize,
     ISketch,
-    ITime,
     position,
     time,
+    TimeFunction,
 } from './janim';
 
 /**
@@ -18,10 +18,10 @@ import {
  * @returns A function that, given the time, returns the position at that time
  */
 export function circularOrbit(
-    center: Function<ITime, IPosition>,
-    radius: Function<ITime, number>,
+    center: TimeFunction<IPosition>,
+    radius: TimeFunction<number>,
     duration: number,
-): Function<ITime, IPosition> {
+): TimeFunction<IPosition> {
     return (t) => {
         const p = center(t);
         const r = radius(t);
@@ -45,9 +45,9 @@ export interface ISketch {
  */
 export interface ITransform {
     /** A function that, given the time, returns the position of the shape */
-    position: Function<ITime, IPosition>;
+    position: TimeFunction<IPosition>;
     /** A function that, given the time, returns the size of the shape */
-    size: Function<ITime, ISize>;
+    size: TimeFunction<ISize>;
 }
 
 /**
@@ -77,7 +77,7 @@ export function lerpColor(startColor: IColor, endColor: IColor): Function<number
  * @param cycleLength The time in milliseconds until the oscillator repeats
  * @returns A function that accepts the time properties of a sketch and returns a value in the range of [-1..1]
  */
-export function sinOsc(cycleLength: number): Function<ITime, number> {
+export function sinOsc(cycleLength: number): TimeFunction<number> {
     return (t) => {
         const phase = (t.total % cycleLength) / cycleLength;
         return Math.sin(2 * Math.PI * phase);
@@ -93,7 +93,7 @@ export function sinOsc(cycleLength: number): Function<ITime, number> {
 export function startSketch(
     canvas: HTMLCanvasElement,
     setup: Function<CanvasRenderingContext2D, void>,
-    draw: Function<ITime, void>,
+    draw: TimeFunction<void>,
 ): ISketch {
     this.ctx = canvas.getContext('2d');
     this.draw = draw;
@@ -132,8 +132,8 @@ export function startSketch(
  * @param size The function that returns the size for a given time
  */
 export function transform(
-    pos: Function<ITime, IPosition>,
-    size: Function<ITime, ISize>,
+    pos: TimeFunction<IPosition>,
+    size: TimeFunction<ISize>,
 ): ITransform {
     return { position: pos, size };
 }

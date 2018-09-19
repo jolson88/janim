@@ -1,5 +1,11 @@
 import * as R from 'ramda';
-import { Function, ITime, lerpColor, sinOsc, toPercentage } from './janim';
+import {
+    ITime,
+    lerpColor,
+    sinOsc,
+    TimeFunction,
+    toPercentage,
+} from './janim';
 
 /**
  * Creates an object representing standard four-channel color value
@@ -23,7 +29,7 @@ export function colorRotate(
     firstColor: IColor,
     secondColor: IColor,
     duration: number,
-): Function<ITime, string> {
+): TimeFunction<string> {
     return R.pipe(
         sinOsc(duration),
         toPercentage(-1.0, 1.0),
@@ -37,7 +43,7 @@ export function colorRotate(
  * @param c Function that returns the color given the time
  * @returns Function that, given the rendering context and time, configures the context style
  */
-export function fill(c: Function<ITime, string>): StyleFunction {
+export function fill(c: TimeFunction<string>): StyleFunction {
     return (ctx, t) => {
         ctx.fillStyle = c(t);
         ctx.fill();
@@ -60,7 +66,7 @@ export interface IColor {
  * @param thickness The thickness of the outline
  * @returns Function that, given the rendering context and time, configures the context style
  */
-export function outline(c: Function<ITime, string>, thickness: number): StyleFunction {
+export function outline(c: TimeFunction<string>, thickness: number): StyleFunction {
     return (ctx, t) => {
         ctx.strokeStyle = c(t);
         ctx.lineWidth = thickness;
