@@ -16,19 +16,22 @@ import {
  * @param center A function that, given the time, returns the center position at that time
  * @param radius A function that, given the time, returns the radius at that time
  * @param duration The duration in milliseconds of the orbit
+ * @param phase A percentage value in range 0..1 saying where the beginning of the orbit is
  * @returns A function that, given the time, returns the position at that time
  */
 export function circularOrbit(
     center: TimeFunction<IPosition>,
     radius: TimeFunction<number>,
     duration: number,
+    phase: number = 0,
 ): TimeFunction<IPosition> {
     return (t) => {
         const p = center(t);
         const r = radius(t);
         const radians = ((t.total % duration) / duration) * 2 * Math.PI;
-        const xOffset = Math.sin(radians) * r;
-        const yOffset = Math.cos(radians) * r;
+        const phasedRadians = phase * 2 * Math.PI;
+        const xOffset = Math.sin(radians + phasedRadians) * r;
+        const yOffset = Math.cos(radians + phasedRadians) * r;
         return position(p.x + xOffset, p.y + yOffset);
     };
 }
