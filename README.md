@@ -30,7 +30,17 @@ TODO
 ### Styles
 TODO
 
+## Building the project
+Building janim can be done with the following code once the repository has been pulled locally:
+```sh
+npm install
+npm run build
+```
+
 ## Examples
+There are examples that can be found in the `examples` directory in the repository. Once the project has been built, you should be able to open any of the HTML files in the example directories directly in your web browser to see the examples in action.
+
+Below are some simple examples of the type of functionality that can be done with Janim.
 
 ### A simple sketch
 This example shows a simple red box that moves right and left in time. It also shows how a developer can use the canvas context directly to do any drawing they wish and don't need to rely on all drawing primitives being included in Janim.
