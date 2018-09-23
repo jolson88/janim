@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example - Simple Rectangle</title>
+    <script src="../node_modules/ramda/dist/ramda.js"></script>
+    <script src="../dist/janim.js"></script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+    <script>
+      const canvas = document.getElementById('myCanvas');
+      const ctx = canvas.getContext('2d');
+
+      const xOffset = R.pipe(J.sinOsc(3000), R.multiply(100));
+      const sk = J.startSketch(canvas, setup, draw);
+
+      function setup() {
+        J.clear(canvas, 'white');
+      }
+
+      function draw(time) {
+        J.clear(canvas, 'white');
+        ctx.fillStyle = 'red';
+        ctx.fillRect(
+          canvas.width / 2 + xOffset(time),
+          canvas.height / 2,
+          100,
+          100
+        );
+      }
+    </script>
+  </body>
+</html>
