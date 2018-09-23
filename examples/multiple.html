@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example - Multiple Canvases</title>
+    <script src="../node_modules/ramda/dist/ramda.js"></script>
+    <script src="../dist/janim.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas1" width="200" height="200" style="border: 1px solid;"></canvas>
+    <canvas id="canvas2" width="200" height="200" style="border: 1px solid;"></canvas>
+    <script>
+      const canvas1 = document.getElementById('canvas1');
+      const canvas2 = document.getElementById('canvas2');
+      J.startSketch(canvas1, R.identity, draw1);
+      J.startSketch(canvas2, R.identity, draw2);
+
+      const center = J.constant(J.position(canvas1.width / 2, canvas1.height / 2));
+      const size = J.constant(J.size(10, 10));
+      const orbit = J.circularOrbit(center, J.constant(80), 3000);
+      const circle1 = J.animatedEllipse(
+        canvas1,
+        J.transform(orbit, size),
+        J.fill(J.constant('yellow'))
+      );
+      const circle2 = J.animatedEllipse(
+        canvas2,
+        J.transform(orbit, size),
+        J.fill(J.constant('red'))
+      );
+
+      function draw1(time) {
+        J.clear(canvas1, 'green');
+        circle1(time);
+      }
+
+      function draw2(time) {
+        J.clear(canvas2, 'blue');
+        circle2(time);
+      }
+    </script>
+  </body>
+</html>

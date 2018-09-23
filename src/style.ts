@@ -1,6 +1,5 @@
 import * as R from 'ramda';
 import {
-    ITime,
     lerpColor,
     sinOsc,
     TimeFunction,
@@ -88,7 +87,7 @@ export function style(...styles: StyleFunction[]): StyleFunction {
 /**
  * A function for setting the style of an animated shape
  */
-export type StyleFunction = (ctx: CanvasRenderingContext2D, t: ITime) => void;
+export type StyleFunction = (ctx: CanvasRenderingContext2D, t: number) => void;
 
 /**
  * Converts a four-channel color value to a standard CSS color string

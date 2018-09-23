@@ -6,16 +6,15 @@ import {
     lerpColor,
     position,
     sinOsc,
-    time,
     toPercentage,
 } from './janim';
 import { nearEqual } from './testHelpers';
 
 test('Sine oscillation', (t) => {
     const fn = sinOsc(1000);
-    t.equal(fn(time(250)), 1, 'should reach max val of oscillator');
-    t.equal(fn(time(750)), -1, 'should reach min val of oscillator');
-    t.ok(nearEqual(fn(time(1500)), 0), 'should repeat for times greater than cycle length');
+    t.equal(fn(250), 1, 'should reach max val of oscillator');
+    t.equal(fn(750), -1, 'should reach min val of oscillator');
+    t.ok(nearEqual(fn(1500), 0), 'should repeat for times greater than cycle length');
     t.end();
 });
 
@@ -32,10 +31,10 @@ test('Circular orbit', (t) => {
     const duration = 1000;
     const orbit = circularOrbit(constant(center), constant(radius), duration);
 
-    let p = orbit(time(0, 0));
+    let p = orbit(0);
     t.equal(p.x, 100, 'should have initial orbit x coord');
     t.equal(p.y, 210, 'should have initial orbit y coord');
-    p = orbit(time(250, 0));
+    p = orbit(250);
     t.equal(p.x, 110, 'x coord should change on orbit');
     t.equal(p.y, 200, 'y coord should change on orbit');
     t.end();

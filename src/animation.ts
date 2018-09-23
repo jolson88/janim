@@ -5,11 +5,22 @@ import {
     IColor,
     IPosition,
     ISize,
-    ISketch,
     position,
-    time,
     TimeFunction,
 } from './janim';
+
+// The collection of sketches that have been started
+const sketches = new Map();
+
+/**
+ * Generates a pseudo-random string to be used as an Id
+ */
+function generateId(): string {
+    const gen = () => {
+        return Math.floor(Math.random() * Math.floor(Number.MAX_SAFE_INTEGER));
+    };
+    return `${gen()}-${gen()}-${gen()}-${gen()}`;
+}
 
 /**
  * Creates a circular orbit that returns an orbital position for any given time
@@ -28,20 +39,12 @@ export function circularOrbit(
     return (t) => {
         const p = center(t);
         const r = radius(t);
-        const radians = ((t.total % duration) / duration) * 2 * Math.PI;
+        const radians = ((t % duration) / duration) * 2 * Math.PI;
         const phasedRadians = phase * 2 * Math.PI;
         const xOffset = Math.sin(radians + phasedRadians) * r;
         const yOffset = Math.cos(radians + phasedRadians) * r;
         return position(p.x + xOffset, p.y + yOffset);
     };
-}
-
-/**
- * A Janim Sketch
- */
-export interface ISketch {
-    /** Stop running this sketch */
-    stop: () => void;
 }
 
 /**
@@ -85,7 +88,7 @@ export function lerpColor(startColor: IColor, endColor: IColor): Function<number
  */
 export function sinOsc(cycleLength: number): TimeFunction<number> {
     return (t) => {
-        const phase = (t.total % cycleLength) / cycleLength;
+        const phase = (t % cycleLength) / cycleLength;
         return Math.sin(2 * Math.PI * phase);
     };
 }
@@ -100,36 +103,26 @@ export function startSketch(
     canvas: HTMLCanvasElement,
     setup: Function<CanvasRenderingContext2D, void>,
     draw: TimeFunction<void>,
-): ISketch {
-    this.ctx = canvas.getContext('2d');
-    this.draw = draw;
-    this.playing = false;
-    this.startTime = Date.now();
+): string {
+    const ctx = canvas.getContext('2d');
+    const sketchId = generateId();
+    sketches.set(sketchId, draw);
 
-    function loop(sketch: any, beginningTime: number, lastFrameTime: number) {
+    function loop(beginningTime: number) {
         return () => {
             const currentTime = Date.now();
-            const elapsedTime = currentTime - lastFrameTime;
             const totalTime = currentTime - beginningTime;
-            sketch.draw(time(totalTime, elapsedTime));
+            sketches.forEach((fn) => {
+                fn(totalTime);
+            });
 
-            if (sketch.playing) {
-                window.requestAnimationFrame(loop(sketch, beginningTime, currentTime));
-            }
+            window.requestAnimationFrame(loop(beginningTime));
         };
     }
 
-    setup(this.ctx);
-    this.playing = true;
-    window.requestAnimationFrame(loop(this, Date.now(), Date.now()));
-
-    return ((sketch) => {
-        return {
-            stop: () => {
-                sketch.playing = false;
-            },
-        };
-    })(this);
+    setup(ctx);
+    window.requestAnimationFrame(loop(Date.now()));
+    return sketchId;
 }
 
 /**

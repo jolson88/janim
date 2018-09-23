@@ -1,18 +1,5 @@
 import * as test from 'tape';
-import { position, size, time } from './janim';
-
-test('Time', (t) => {
-    const total = 1200;
-    const elapsed = 16;
-
-    let curTime = time(total, elapsed);
-    t.equal(curTime.total, total, 'should set total time');
-    t.equal(curTime.elapsed, elapsed, 'should set elapsed time');
-
-    curTime = time(total);
-    t.equal(curTime.elapsed, 0, 'should default elapsed time to 0');
-    t.end();
-});
+import { position, size } from './janim';
 
 test('Size', (t) => {
     const s = size(200, 200);

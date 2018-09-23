@@ -1,6 +1,6 @@
 {
   "name": "janim",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "A lightweight, functional, HTML5 creative coding library for developers",
   "main": "dist/janim.js",
   "scripts": {
