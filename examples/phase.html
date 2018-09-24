@@ -10,7 +10,7 @@
     <script>
         const canvas = document.getElementById('myCanvas');
         const center = J.constant(J.position(canvas.width / 2, canvas.height / 2));
-        const centerOrbit = J.changeSpeed(0.1, J.orbit(center, J.constant(200)));
+        const centerOrbit = J.slower(10, J.orbit(center, J.constant(200)));
         const moonOrbit = J.orbit(J.constant(J.origin), J.constant(80));
 
         J.startSketch(canvas, setup, draw);
@@ -22,8 +22,8 @@
             J.constant(J.size(40, 40))
           ),
           J.outline(
-            J.changeSpeed(
-              0.25,
+            J.slower(
+              4,
               J.colorRotate(
                 J.constant(J.color(210, 0, 0)),
                 J.constant(J.color(0, 210, 0))
@@ -38,8 +38,8 @@
             J.constant(J.size(40, 40))
           ),
           J.outline(
-            J.changeSpeed(
-              0.25,
+            J.slower(
+              4,
               J.colorRotate(
                 J.constant(J.color(210, 0, 210)),
                 J.constant(J.color(210, 210, 0))

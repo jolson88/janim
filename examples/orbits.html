@@ -12,7 +12,7 @@
       const center = J.position(canvas.width / 2, canvas.height / 2);
       J.startSketch(canvas, setup, draw);
 
-      const planetOrbit = J.changeSpeed(0.15, J.orbit(J.constant(center), J.constant(200)));
+      const planetOrbit = J.slower(7, J.orbit(J.constant(center), J.constant(200)));
       const planet = J.animatedEllipse(
         canvas,
         J.transform(
@@ -22,8 +22,8 @@
         J.style(
           J.outline(J.constant('black'), 2),
           J.fill(
-            J.changeSpeed(
-              0.25,
+            J.slower(
+              4,
               J.colorRotate(
                 J.constant(J.color(230, 0, 0)),
                 J.constant(J.color(0, 230, 0))
@@ -43,8 +43,8 @@
         J.style(
           J.outline(J.constant('black'), 3),
           J.fill(
-            J.changeSpeed(
-              0.25,
+            J.slower(
+              4,
               J.colorRotate(
                 J.constant(J.color(0, 0, 230)),
                 J.constant(J.color(230, 230, 0))

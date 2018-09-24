@@ -15,16 +15,16 @@
       const rotator = R.compose(
         R.multiply(2 * Math.PI),
         J.toPercentage(-1, 1),
-        J.changeSpeed(0.25, J.sin),
+        J.slower(4, J.sin),
       );
       const revRotator = R.compose(
         R.multiply(2 * Math.PI),
         J.toPercentage(-1, 1),
         R.multiply(-1),
-        J.changeSpeed(0.25, J.sin),
+        J.slower(4, J.sin),
       );
 
-      const orbit = J.changeSpeed(0.15, J.orbit(J.constant(center), J.constant(200)));
+      const orbit = J.slower(7, J.orbit(J.constant(center), J.constant(200)));
       const backRect = J.animatedRect(
         canvas,
         J.transform(

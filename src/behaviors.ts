@@ -134,32 +134,32 @@ export function liftA4<T1, T2, T3, T4, U>(
  */
 export const time: Behavior<number> = R.identity;
 
-export function changeSpeed<T>(
-    ratio: number,
+export function slower<T>(
+    speedFactor: number,
     b: Behavior<T>,
 ): Behavior<T> {
-    return R.compose(b, R.multiply(ratio));
+    return R.compose(b, R.multiply(1 / speedFactor));
 }
 
-function translateTime<T>(
-    sec: number,
+export function faster<T>(
+    speedFactor: number,
     b: Behavior<T>,
 ): Behavior<T> {
-    return R.compose(b, R.add(sec));
+    return R.compose(b, R.multiply(speedFactor));
 }
 
 export function earlier<T>(
     sec: number,
     b: Behavior<T>,
 ): Behavior<T> {
-    return translateTime(-sec * 1000, b);
+    return R.compose(b, R.add(-sec * 1000)); // Add a neg number is cleaner than partialRight of subtract
 }
 
 export function later<T>(
     sec: number,
     b: Behavior<T>,
 ): Behavior<T> {
-    return translateTime(sec * 1000, b);
+    return R.compose(b, R.add(sec * 1000));
 }
 
 //

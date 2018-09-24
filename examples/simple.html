@@ -12,7 +12,7 @@
       const ctx = canvas.getContext('2d');
 
       const scaledOffset = R.compose(R.multiply(100), J.sin);
-      const offset = J.changeSpeed(2, scaledOffset);
+      const offset = J.faster(2, scaledOffset);
       J.startSketch(canvas, setup, draw);
 
       function setup() {

@@ -92,7 +92,7 @@ npm run build</code></pre>
 <span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>);
 
 <span class="hljs-keyword">const</span> scaledOffset = R.compose(R.multiply(<span class="hljs-number">100</span>), J.sin);
-<span class="hljs-keyword">const</span> offset = J.changeSpeed(<span class="hljs-number">2</span>, scaledOffset);
+<span class="hljs-keyword">const</span> offset = J.faster(<span class="hljs-number">2</span>, scaledOffset);
 J.startSketch(canvas, setup, draw);
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
@@ -115,7 +115,7 @@ J.startSketch(canvas, setup, draw);
 <span class="hljs-keyword">const</span> center = J.position(canvas.width / <span class="hljs-number">2</span>, canvas.height / <span class="hljs-number">2</span>);
 J.startSketch(canvas, setup, draw);
 
-<span class="hljs-keyword">const</span> planetOrbit = J.changeSpeed(<span class="hljs-number">0.2</span>, J.orbit(J.constant(center), J.constant(<span class="hljs-number">200</span>)));
+<span class="hljs-keyword">const</span> planetOrbit = J.slower(<span class="hljs-number">5</span>, J.orbit(J.constant(center), J.constant(<span class="hljs-number">200</span>)));
 <span class="hljs-keyword">const</span> planet = J.animatedEllipse(
     canvas,
     J.transform(
@@ -161,17 +161,17 @@ J.startSketch(canvas, setup, draw);
 <span class="hljs-keyword">const</span> sk = J.startSketch(canvas, setup, draw);
 
 <span class="hljs-keyword">const</span> rotator = R.pipe(
-    J.changeSpeed(<span class="hljs-number">0.25</span>, J.sin),
+    J.slower(<span class="hljs-number">4</span>, J.sin),
     J.toPercentage(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>),
     R.multiply(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI)
 );
 <span class="hljs-keyword">const</span> revRotator = R.pipe(
-    J.changeSpeed(<span class="hljs-number">0.25</span>, J.sin),
+    J.slower(<span class="hljs-number">4</span>, J.sin),
     R.multiply(<span class="hljs-number">-1</span>),
     J.toPercentage(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>),
     R.multiply(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI)
 );
-<span class="hljs-keyword">const</span> orbit = J.changeSpeed(<span class="hljs-number">0.15</span>, J.orbit(J.constant(center), J.constant(<span class="hljs-number">200</span>)));
+<span class="hljs-keyword">const</span> orbit = J.slower(<span class="hljs-number">7</span>, J.orbit(J.constant(center), J.constant(<span class="hljs-number">200</span>)));
 
 <span class="hljs-keyword">const</span> backRect = J.animatedRect(
     canvas,

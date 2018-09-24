@@ -50,7 +50,7 @@ const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
 const scaledOffset = R.compose(R.multiply(100), J.sin);
-const offset = J.changeSpeed(2, scaledOffset);
+const offset = J.faster(2, scaledOffset);
 J.startSketch(canvas, setup, draw);
 
 function setup() {
@@ -77,7 +77,7 @@ const canvas = document.getElementById('myCanvas');
 const center = J.position(canvas.width / 2, canvas.height / 2);
 J.startSketch(canvas, setup, draw);
 
-const planetOrbit = J.changeSpeed(0.2, J.orbit(J.constant(center), J.constant(200)));
+const planetOrbit = J.slower(5, J.orbit(J.constant(center), J.constant(200)));
 const planet = J.animatedEllipse(
     canvas,
     J.transform(
@@ -132,17 +132,17 @@ const center = J.position(canvas.width / 2, canvas.height / 2);
 const sk = J.startSketch(canvas, setup, draw);
 
 const rotator = R.pipe(
-    J.changeSpeed(0.25, J.sin),
+    J.slower(4, J.sin),
     J.toPercentage(-1, 1),
     R.multiply(2 * Math.PI)
 );
 const revRotator = R.pipe(
-    J.changeSpeed(0.25, J.sin),
+    J.slower(4, J.sin),
     R.multiply(-1),
     J.toPercentage(-1, 1),
     R.multiply(2 * Math.PI)
 );
-const orbit = J.changeSpeed(0.15, J.orbit(J.constant(center), J.constant(200)));
+const orbit = J.slower(7, J.orbit(J.constant(center), J.constant(200)));
 
 const backRect = J.animatedRect(
     canvas,

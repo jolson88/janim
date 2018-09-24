@@ -81,11 +81,11 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_behaviors_.html#changespeed" class="tsd-kind-icon">change<wbr>Speed</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_behaviors_.html#colorrotate" class="tsd-kind-icon">color<wbr>Rotate</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_behaviors_.html#constant" class="tsd-kind-icon">constant</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_behaviors_.html#cos" class="tsd-kind-icon">cos</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_behaviors_.html#earlier" class="tsd-kind-icon">earlier</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_behaviors_.html#faster" class="tsd-kind-icon">faster</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_behaviors_.html#invert" class="tsd-kind-icon">invert</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_behaviors_.html#later" class="tsd-kind-icon">later</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_behaviors_.html#lifta2" class="tsd-kind-icon">lift<wbr>A2</a></li>
@@ -94,6 +94,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_behaviors_.html#orbit" class="tsd-kind-icon">orbit</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_behaviors_.html#positionadd" class="tsd-kind-icon">position<wbr>Add</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_behaviors_.html#sin" class="tsd-kind-icon">sin</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_behaviors_.html#slower" class="tsd-kind-icon">slower</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_behaviors_.html#triangle" class="tsd-kind-icon">triangle</a></li>
 							</ul>
 						</section>
@@ -323,6 +324,38 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>sec: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>b: <a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="faster" class="tsd-anchor"></a>
+					<h3>faster</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">faster&lt;T&gt;<span class="tsd-signature-symbol">(</span>speedFactor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, b<span class="tsd-signature-symbol">: </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/51296c1/src/behaviors.ts#L144">behaviors.ts:144</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>speedFactor: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
 									<h5>b: <a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
@@ -628,6 +661,38 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="slower" class="tsd-anchor"></a>
+					<h3>slower</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">slower&lt;T&gt;<span class="tsd-signature-symbol">(</span>speedFactor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, b<span class="tsd-signature-symbol">: </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/51296c1/src/behaviors.ts#L137">behaviors.ts:137</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>speedFactor: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>b: <a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 					<a name="triangle" class="tsd-anchor"></a>
 					<h3>triangle</h3>
@@ -690,9 +755,6 @@
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="_behaviors_.html#time" class="tsd-kind-icon">time</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_behaviors_.html#changespeed" class="tsd-kind-icon">change<wbr>Speed</a>
-					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_behaviors_.html#colorrotate" class="tsd-kind-icon">color<wbr>Rotate</a>
 					</li>
@@ -704,6 +766,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_behaviors_.html#earlier" class="tsd-kind-icon">earlier</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_behaviors_.html#faster" class="tsd-kind-icon">faster</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_behaviors_.html#invert" class="tsd-kind-icon">invert</a>
@@ -728,6 +793,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_behaviors_.html#sin" class="tsd-kind-icon">sin</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_behaviors_.html#slower" class="tsd-kind-icon">slower</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_behaviors_.html#triangle" class="tsd-kind-icon">triangle</a>

@@ -1,18 +1,19 @@
 import * as R from 'ramda';
 import * as test from 'tape';
 import {
-    changeSpeed,
     color,
     colorRotate,
     constant,
     cos,
     earlier,
+    faster,
     later,
     liftA2,
     orbit,
     position,
     positionAdd,
     sin,
+    slower,
     time,
     triangle,
 } from './janim';
@@ -70,11 +71,11 @@ test('Lifting', (t) => {
 });
 
 test('Time Transforms', (t) => {
-    let fn = changeSpeed(0.5, time);
+    let fn = slower(2, time);
     t.equal(fn(500), 250, 'transform to slower time');
     t.equal(fn(1000), 500, 'transform to slower time');
 
-    fn = changeSpeed(2, time);
+    fn = faster(2, time);
     t.equal(fn(500), 1000, 'transform to faster time');
     t.equal(fn(1000), 2000, 'transform to faster time');
 
