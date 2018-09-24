@@ -1,9 +1,16 @@
-import * as R from 'ramda';
 import {
+    Behavior,
     ITransform,
     StyleFunction,
-    TimeFunction,
 } from './janim';
+
+/**
+ * Specifies the interpretation of the rectangle's position
+ */
+export enum RectMode {
+    Corner = 0,
+    Center = 1,
+}
 
 /**
  * Creates an ellipse that is animated over time
@@ -16,7 +23,7 @@ export function animatedEllipse(
     canvas: HTMLCanvasElement,
     transform: ITransform,
     style: StyleFunction,
-): TimeFunction<void> {
+): Behavior<void> {
     const ctx = canvas.getContext('2d');
     return (t) => {
         const pos = transform.position(t);
@@ -52,7 +59,7 @@ export function animatedRect(
     transform: ITransform,
     style: StyleFunction,
     mode: RectMode = RectMode.Corner,
-): TimeFunction<void> {
+): Behavior<void> {
     const ctx = canvas.getContext('2d');
     return (t) => {
         const pos = transform.position(t);
@@ -75,23 +82,4 @@ export function animatedRect(
         style(ctx, t);
         ctx.setTransform(1, 0, 0, 1, 0, 0);
     };
-}
-/**
- * Clears the entire canvas with a given color
- * @param canvas The canvas to fill
- * @param color The CSS color string to fill the canvas with
- */
-export function clear(canvas: HTMLCanvasElement, color: string): void {
-    const ctx = canvas.getContext('2d');
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-/**
- * Specifies the interpretation of the rectangle's position
- */
-export enum RectMode {
-    Corner = 0,
-    Center = 1,
 }

@@ -1,5 +1,5 @@
 # WIP - Janim
-Janim is a lightweight, Functional Programming based, Processing-inspired 2d creative coding library for developers. This library leverages as many built-in concepts and APIs in HTML5 (e.g. canvas, css colors, etc.) as possible.
+Janim is a lightweight, FRP-based, Processing-inspired 2d creative coding library for developers. 
 
 ## Goals
 **Minimalist**. Janim aims to provide a minimal API surface whose power comes through the composition of its primitives, not by providing a large API that does everything under the sun in its own way. We are surrounded by frameworks that you have to "buy into" and largely write your application in the context of that framework. Many frameworks are too big and bulky for their own good. Their size and learning curves provide obstacles to leveraging them. Janim aims to rectify this by minimizing its own API surface and addressing the essential complexity of visual creative coding: understanding time and how behaviors change over time.
@@ -22,7 +22,7 @@ At its core, the essence of Janim boils down to a single type of function: a fun
 /**
  * A function representing a value expressed over time
  */
-export type TimeFunction<T> = (time: ITime) => T;
+export type Behavior<T> = (time: Time) => T;
 ```
 
 TODO
@@ -49,9 +49,9 @@ This example shows a simple red box that moves right and left in time. It also s
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-const xOffset = R.pipe(J.sinOsc(3000), R.multiply(100));
-const sk = J.startSketch(canvas, setup, draw);
-// Sketch can be stopped later via sk.stop();
+const scaledOffset = R.compose(R.multiply(100), J.sin);
+const offset = J.changeSpeed(2, scaledOffset);
+J.startSketch(canvas, setup, draw);
 
 function setup() {
     J.clear(canvas, 'white');
@@ -61,7 +61,7 @@ function draw(time) {
     J.clear(canvas, 'white');
     ctx.fillStyle = 'red';
     ctx.fillRect(
-        canvas.width / 2 + xOffset(time),
+        canvas.width / 2 + offset(time),
         canvas.height / 2,
         100,
         100
@@ -70,21 +70,21 @@ function draw(time) {
 ```
 
 ### Animating shapes
-Let's create a circle that orbits around the center of the canvas. It takes 7 seconds (7000 milliseconds) to complete its orbit.
+Let's create a circle that orbits around the center of the canvas. It takes 5 seconds (5000 milliseconds) to complete its orbit.
 
 ```js
 const canvas = document.getElementById('myCanvas');
 const center = J.position(canvas.width / 2, canvas.height / 2);
-const sk = J.startSketch(canvas, setup, draw);
+J.startSketch(canvas, setup, draw);
 
-const planetOrbit = J.circularOrbit(J.constant(center), J.constant(200), 7000);
+const planetOrbit = J.changeSpeed(0.2, J.orbit(J.constant(center), J.constant(200)));
 const planet = J.animatedEllipse(
     canvas,
     J.transform(
         planetOrbit,
         J.constant(J.size(40, 40))
     ),
-    J.outline(J.constant('black'), 2)
+    J.outline(J.constant(J.color(0, 0, 0)), 2)
 );
 
 function setup() {
@@ -102,14 +102,14 @@ You can see how declarative this approach is. Instead of focusing on imperative 
 As animation is done via higher-order functions, they can easily be composed together to build more complex animations. For example, we can create a new orbit for a moon that orbits around the planet. Notice how the moon's orbit position parameter is actually the planet's orbit itself. This means that at any given time, the moon's position is determined by the planet's position and will change over time as well so the two are kept "in sync" with each other.
 
 ```js
-const moonOrbit = J.circularOrbit(planetOrbit, J.constant(60), 1000);
+const moonOrbit = J.orbit(planetOrbit, J.constant(60));
 const moon = J.animatedEllipse(
     canvas,
     J.transform(
         moonOrbit,
         J.constant(J.size(10, 10))
     ),
-    J.outline(J.constant('black'), 2)
+    J.outline(J.constant(J.color(0, 0, 0)), 2)
 );
 
 function setup() {
@@ -131,21 +131,38 @@ const canvas = document.getElementById('myCanvas');
 const center = J.position(canvas.width / 2, canvas.height / 2);
 const sk = J.startSketch(canvas, setup, draw);
 
-// Create a rotation over time
-const rotator = R.pipe(J.sinOsc(4000), J.toPercentage(-1, 1), R.multiply(2 * Math.PI));
+const rotator = R.pipe(
+    J.changeSpeed(0.25, J.sin),
+    J.toPercentage(-1, 1),
+    R.multiply(2 * Math.PI)
+);
+const revRotator = R.pipe(
+    J.changeSpeed(0.25, J.sin),
+    R.multiply(-1),
+    J.toPercentage(-1, 1),
+    R.multiply(2 * Math.PI)
+);
+const orbit = J.changeSpeed(0.15, J.orbit(J.constant(center), J.constant(200)));
 
-const orbit = J.circularOrbit(J.constant(center), J.constant(200), 7000);
-const ellipse = J.animatedEllipse(
+const backRect = J.animatedRect(
     canvas,
     J.transform(
         orbit,
-        J.constant(J.size(80, 40)),
-        rotator // Pass the TimeFunction we created that returns the rotation
+        J.constant(J.size(60, 60)),
+        rotator
     ),
-    J.style(
-        J.outline(J.constant('black'), 2),
-        J.fill(J.colorRotate(J.color(255, 0, 0), J.color(0, 255, 0), 2000))
-    )
+    J.outline(J.constant(J.color(0, 0, 0)), 2),
+    J.RectMode.Center
+);
+const frontRect = J.animatedRect(
+    canvas,
+    J.transform(
+        orbit,
+        J.constant(J.size(20, 20)),
+        revRotator
+    ),
+    J.outline(J.constant(J.color(0, 0, 0)), 2),
+    J.RectMode.Center
 );
 
 function setup() {
@@ -154,7 +171,8 @@ function setup() {
 
 function draw(time) {
     J.clear(canvas, 'white');
-    ellipse(time);
+    backRect(time);
+    frontRect(time);
 }
 ```
 
@@ -170,8 +188,8 @@ const planet = J.animatedEllipse(
     ),
     /* New stuff here! */
     J.style(
-        J.outline(J.constant('black'), 2),
-        J.fill(J.colorRotate(J.color(230, 0, 0), J.color(0, 230, 0), 4000))
+        J.outline(J.constant(J.color(0, 0, 0)), 2),
+        J.fill(J.constant(J.color(255, 0, 0))),
     )
 );
 
@@ -183,8 +201,8 @@ const moon = J.animatedEllipse(
     ),
     /* New stuff here! */
     J.style(
-        J.outline(J.constant('black'), 3),
-        J.fill(J.colorRotate(J.color(0, 0, 230), J.color(230, 230, 0), 4000))
+        J.outline(J.constant(J.color(0, 0, 0)), 3),
+        J.fill(J.constant(J.color(0, 0, 255))),
     )
 );
 ```

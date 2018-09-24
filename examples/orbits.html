@@ -10,9 +10,9 @@
     <script>
       const canvas = document.getElementById('myCanvas');
       const center = J.position(canvas.width / 2, canvas.height / 2);
-      const sk = J.startSketch(canvas, setup, draw);
+      J.startSketch(canvas, setup, draw);
 
-      const planetOrbit = J.circularOrbit(J.constant(center), J.constant(200), 7000);
+      const planetOrbit = J.changeSpeed(0.15, J.orbit(J.constant(center), J.constant(200)));
       const planet = J.animatedEllipse(
         canvas,
         J.transform(
@@ -21,11 +21,19 @@
         ),
         J.style(
           J.outline(J.constant('black'), 2),
-          J.fill(J.colorRotate(J.color(230, 0, 0), J.color(0, 230, 0), 4000))
+          J.fill(
+            J.changeSpeed(
+              0.25,
+              J.colorRotate(
+                J.constant(J.color(230, 0, 0)),
+                J.constant(J.color(0, 230, 0))
+              )
+            )
+          )
         )
       );
 
-      const moonOrbit = J.circularOrbit(planetOrbit, J.constant(60), 1000);
+      const moonOrbit = J.orbit(planetOrbit, J.constant(60));
       const moon = J.animatedEllipse(
         canvas,
         J.transform(
@@ -34,7 +42,15 @@
         ),
         J.style(
           J.outline(J.constant('black'), 3),
-          J.fill(J.colorRotate(J.color(0, 0, 230), J.color(230, 230, 0), 4000))
+          J.fill(
+            J.changeSpeed(
+              0.25,
+              J.colorRotate(
+                J.constant(J.color(0, 0, 230)),
+                J.constant(J.color(230, 230, 0))
+              )
+            )
+          )
         )
       );
 

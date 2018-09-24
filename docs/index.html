@@ -61,7 +61,7 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="wip-janim">WIP - Janim</h1>
-				<p>Janim is a lightweight, Functional Programming based, Processing-inspired 2d creative coding library for developers. This library leverages as many built-in concepts and APIs in HTML5 (e.g. canvas, css colors, etc.) as possible.</p>
+				<p>Janim is a lightweight, FRP-based, Processing-inspired 2d creative coding library for developers. </p>
 				<h2 id="goals">Goals</h2>
 				<p><strong>Minimalist</strong>. Janim aims to provide a minimal API surface whose power comes through the composition of its primitives, not by providing a large API that does everything under the sun in its own way. We are surrounded by frameworks that you have to &quot;buy into&quot; and largely write your application in the context of that framework. Many frameworks are too big and bulky for their own good. Their size and learning curves provide obstacles to leveraging them. Janim aims to rectify this by minimizing its own API surface and addressing the essential complexity of visual creative coding: understanding time and how behaviors change over time.</p>
 				<p><strong>Getting out of the developer&#39;s way</strong>. By leveraging built-in HTML 5 functionality (like the Canvas, simple Css colors, event handlers, etc.) and simple &quot;escape hatches&quot;, Janim lets developers write any 2d visualization code they can imagine without Janim needing to provide functionality for any possible scenario under the sun.</p>
@@ -75,7 +75,7 @@
 				<pre><code class="language-typescript"><span class="hljs-comment">/**
  * A function representing a value expressed over time
  */</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> TimeFunction&lt;T&gt; = <span class="hljs-function">(<span class="hljs-params">time: ITime</span>) =&gt;</span> T;</code></pre>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> Behavior&lt;T&gt; = <span class="hljs-function">(<span class="hljs-params">time: Time</span>) =&gt;</span> T;</code></pre>
 				<p>TODO</p>
 				<h3 id="styles">Styles</h3>
 				<p>TODO</p>
@@ -91,9 +91,9 @@ npm run build</code></pre>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myCanvas'</span>);
 <span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>);
 
-<span class="hljs-keyword">const</span> xOffset = R.pipe(J.sinOsc(<span class="hljs-number">3000</span>), R.multiply(<span class="hljs-number">100</span>));
-<span class="hljs-keyword">const</span> sk = J.startSketch(canvas, setup, draw);
-<span class="hljs-comment">// Sketch can be stopped later via sk.stop();</span>
+<span class="hljs-keyword">const</span> scaledOffset = R.compose(R.multiply(<span class="hljs-number">100</span>), J.sin);
+<span class="hljs-keyword">const</span> offset = J.changeSpeed(<span class="hljs-number">2</span>, scaledOffset);
+J.startSketch(canvas, setup, draw);
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
     J.clear(canvas, <span class="hljs-string">'white'</span>);
@@ -103,26 +103,26 @@ npm run build</code></pre>
     J.clear(canvas, <span class="hljs-string">'white'</span>);
     ctx.fillStyle = <span class="hljs-string">'red'</span>;
     ctx.fillRect(
-        canvas.width / <span class="hljs-number">2</span> + xOffset(time),
+        canvas.width / <span class="hljs-number">2</span> + offset(time),
         canvas.height / <span class="hljs-number">2</span>,
         <span class="hljs-number">100</span>,
         <span class="hljs-number">100</span>
     );
 }</code></pre>
 				<h3 id="animating-shapes">Animating shapes</h3>
-				<p>Let&#39;s create a circle that orbits around the center of the canvas. It takes 7 seconds (7000 milliseconds) to complete its orbit.</p>
+				<p>Let&#39;s create a circle that orbits around the center of the canvas. It takes 5 seconds (5000 milliseconds) to complete its orbit.</p>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myCanvas'</span>);
 <span class="hljs-keyword">const</span> center = J.position(canvas.width / <span class="hljs-number">2</span>, canvas.height / <span class="hljs-number">2</span>);
-<span class="hljs-keyword">const</span> sk = J.startSketch(canvas, setup, draw);
+J.startSketch(canvas, setup, draw);
 
-<span class="hljs-keyword">const</span> planetOrbit = J.circularOrbit(J.constant(center), J.constant(<span class="hljs-number">200</span>), <span class="hljs-number">7000</span>);
+<span class="hljs-keyword">const</span> planetOrbit = J.changeSpeed(<span class="hljs-number">0.2</span>, J.orbit(J.constant(center), J.constant(<span class="hljs-number">200</span>)));
 <span class="hljs-keyword">const</span> planet = J.animatedEllipse(
     canvas,
     J.transform(
         planetOrbit,
         J.constant(J.size(<span class="hljs-number">40</span>, <span class="hljs-number">40</span>))
     ),
-    J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">2</span>)
+    J.outline(J.constant(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)), <span class="hljs-number">2</span>)
 );
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
@@ -135,14 +135,14 @@ npm run build</code></pre>
 }</code></pre>
 				<p>You can see how declarative this approach is. Instead of focusing on imperative code in our <code>draw</code> function that is calculating how each frame is rendered, we&#39;ve declared the behavior we want over time with the orbit and simply give the planet the current frame time to draw it.</p>
 				<p>As animation is done via higher-order functions, they can easily be composed together to build more complex animations. For example, we can create a new orbit for a moon that orbits around the planet. Notice how the moon&#39;s orbit position parameter is actually the planet&#39;s orbit itself. This means that at any given time, the moon&#39;s position is determined by the planet&#39;s position and will change over time as well so the two are kept &quot;in sync&quot; with each other.</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> moonOrbit = J.circularOrbit(planetOrbit, J.constant(<span class="hljs-number">60</span>), <span class="hljs-number">1000</span>);
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> moonOrbit = J.orbit(planetOrbit, J.constant(<span class="hljs-number">60</span>));
 <span class="hljs-keyword">const</span> moon = J.animatedEllipse(
     canvas,
     J.transform(
         moonOrbit,
         J.constant(J.size(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>))
     ),
-    J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">2</span>)
+    J.outline(J.constant(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)), <span class="hljs-number">2</span>)
 );
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
@@ -160,21 +160,38 @@ npm run build</code></pre>
 <span class="hljs-keyword">const</span> center = J.position(canvas.width / <span class="hljs-number">2</span>, canvas.height / <span class="hljs-number">2</span>);
 <span class="hljs-keyword">const</span> sk = J.startSketch(canvas, setup, draw);
 
-<span class="hljs-comment">// Create a rotation over time</span>
-<span class="hljs-keyword">const</span> rotator = R.pipe(J.sinOsc(<span class="hljs-number">4000</span>), J.toPercentage(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>), R.multiply(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI));
+<span class="hljs-keyword">const</span> rotator = R.pipe(
+    J.changeSpeed(<span class="hljs-number">0.25</span>, J.sin),
+    J.toPercentage(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>),
+    R.multiply(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI)
+);
+<span class="hljs-keyword">const</span> revRotator = R.pipe(
+    J.changeSpeed(<span class="hljs-number">0.25</span>, J.sin),
+    R.multiply(<span class="hljs-number">-1</span>),
+    J.toPercentage(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>),
+    R.multiply(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI)
+);
+<span class="hljs-keyword">const</span> orbit = J.changeSpeed(<span class="hljs-number">0.15</span>, J.orbit(J.constant(center), J.constant(<span class="hljs-number">200</span>)));
 
-<span class="hljs-keyword">const</span> orbit = J.circularOrbit(J.constant(center), J.constant(<span class="hljs-number">200</span>), <span class="hljs-number">7000</span>);
-<span class="hljs-keyword">const</span> ellipse = J.animatedEllipse(
+<span class="hljs-keyword">const</span> backRect = J.animatedRect(
     canvas,
     J.transform(
         orbit,
-        J.constant(J.size(<span class="hljs-number">80</span>, <span class="hljs-number">40</span>)),
-        rotator <span class="hljs-comment">// Pass the TimeFunction we created that returns the rotation</span>
+        J.constant(J.size(<span class="hljs-number">60</span>, <span class="hljs-number">60</span>)),
+        rotator
     ),
-    J.style(
-        J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">2</span>),
-        J.fill(J.colorRotate(J.color(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), J.color(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">2000</span>))
-    )
+    J.outline(J.constant(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)), <span class="hljs-number">2</span>),
+    J.RectMode.Center
+);
+<span class="hljs-keyword">const</span> frontRect = J.animatedRect(
+    canvas,
+    J.transform(
+        orbit,
+        J.constant(J.size(<span class="hljs-number">20</span>, <span class="hljs-number">20</span>)),
+        revRotator
+    ),
+    J.outline(J.constant(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)), <span class="hljs-number">2</span>),
+    J.RectMode.Center
 );
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
@@ -183,7 +200,8 @@ npm run build</code></pre>
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params">time</span>) </span>{
     J.clear(canvas, <span class="hljs-string">'white'</span>);
-    ellipse(time);
+    backRect(time);
+    frontRect(time);
 }</code></pre>
 				<h3 id="composing-styles-together">Composing styles together</h3>
 				<p>Styles can be composed together as well. We don&#39;t need to have something simple like a static outline. These styles can also change over time just like other concepts in Janim. For example, on top of a simple black border, we can also style the planet to change between red/blue and style the moon to change between green/yellow. This is done using a combo of <code>fill</code> and <code>colorRotate</code> functions combined with <code>outline</code> using the <code>style</code> combiner function:</p>
@@ -195,8 +213,8 @@ npm run build</code></pre>
     ),
     <span class="hljs-comment">/* New stuff here! */</span>
     J.style(
-        J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">2</span>),
-        J.fill(J.colorRotate(J.color(<span class="hljs-number">230</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), J.color(<span class="hljs-number">0</span>, <span class="hljs-number">230</span>, <span class="hljs-number">0</span>), <span class="hljs-number">4000</span>))
+        J.outline(J.constant(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)), <span class="hljs-number">2</span>),
+        J.fill(J.constant(J.color(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>))),
     )
 );
 
@@ -208,8 +226,8 @@ npm run build</code></pre>
     ),
     <span class="hljs-comment">/* New stuff here! */</span>
     J.style(
-        J.outline(J.constant(<span class="hljs-string">'black'</span>), <span class="hljs-number">3</span>),
-        J.fill(J.colorRotate(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">230</span>), J.color(<span class="hljs-number">230</span>, <span class="hljs-number">230</span>, <span class="hljs-number">0</span>), <span class="hljs-number">4000</span>))
+        J.outline(J.constant(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)), <span class="hljs-number">3</span>),
+        J.fill(J.constant(J.color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>))),
     )
 );</code></pre>
 				<h3 id="custom-styles">Custom Styles</h3>
@@ -242,16 +260,16 @@ npm run build</code></pre>
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_animation_.html">"animation"</a>
+						<a href="modules/_behaviors_.html">"behaviors"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_core_.html">"core"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_shapes_.html">"shapes"</a>
+						<a href="modules/_graphics_.html">"graphics"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_style_.html">"style"</a>
+						<a href="modules/_shapes_.html">"shapes"</a>
 					</li>
 				</ul>
 			</nav>

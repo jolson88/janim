@@ -77,7 +77,6 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_shapes_.html#animatedellipse" class="tsd-kind-icon">animated<wbr>Ellipse</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_shapes_.html#animatedrect" class="tsd-kind-icon">animated<wbr>Rect</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_shapes_.html#clear" class="tsd-kind-icon">clear</a></li>
 							</ul>
 						</section>
 					</div>
@@ -89,13 +88,13 @@
 					<a name="animatedellipse" class="tsd-anchor"></a>
 					<h3>animated<wbr>Ellipse</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">animated<wbr>Ellipse<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, transform<span class="tsd-signature-symbol">: </span><a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a>, style<span class="tsd-signature-symbol">: </span><a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">animated<wbr>Ellipse<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, transform<span class="tsd-signature-symbol">: </span><a href="../interfaces/_graphics_.itransform.html" class="tsd-signature-type">ITransform</a>, style<span class="tsd-signature-symbol">: </span><a href="_graphics_.html#stylefunction" class="tsd-signature-type">StyleFunction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/a5043c2/src/shapes.ts#L15">shapes.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/3982077/src/shapes.ts#L22">shapes.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -112,19 +111,19 @@
 									</div>
 								</li>
 								<li>
-									<h5>transform: <a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a></h5>
+									<h5>transform: <a href="../interfaces/_graphics_.itransform.html" class="tsd-signature-type">ITransform</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A set of transforms that determine the position, size, and rotation of the shape</p>
 									</div>
 								</li>
 								<li>
-									<h5>style: <a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h5>
+									<h5>style: <a href="_graphics_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A function that, given the time, styles the shape as specified</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>Function that accepts the current point in time and draws the ellipse</p>
 						</li>
 					</ul>
@@ -133,13 +132,13 @@
 					<a name="animatedrect" class="tsd-anchor"></a>
 					<h3>animated<wbr>Rect</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">animated<wbr>Rect<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, transform<span class="tsd-signature-symbol">: </span><a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a>, style<span class="tsd-signature-symbol">: </span><a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a>, mode<span class="tsd-signature-symbol">?: </span><a href="../enums/_shapes_.rectmode.html" class="tsd-signature-type">RectMode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">animated<wbr>Rect<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, transform<span class="tsd-signature-symbol">: </span><a href="../interfaces/_graphics_.itransform.html" class="tsd-signature-type">ITransform</a>, style<span class="tsd-signature-symbol">: </span><a href="_graphics_.html#stylefunction" class="tsd-signature-type">StyleFunction</a>, mode<span class="tsd-signature-symbol">?: </span><a href="../enums/_shapes_.rectmode.html" class="tsd-signature-type">RectMode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/a5043c2/src/shapes.ts#L50">shapes.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/3982077/src/shapes.ts#L57">shapes.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -156,13 +155,13 @@
 									</div>
 								</li>
 								<li>
-									<h5>transform: <a href="../interfaces/_animation_.itransform.html" class="tsd-signature-type">ITransform</a></h5>
+									<h5>transform: <a href="../interfaces/_graphics_.itransform.html" class="tsd-signature-type">ITransform</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A set of transforms that determine the position, size, and rotation of the shape</p>
 									</div>
 								</li>
 								<li>
-									<h5>style: <a href="_style_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h5>
+									<h5>style: <a href="_graphics_.html#stylefunction" class="tsd-signature-type">StyleFunction</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A function that, given the time, styles the shape as specified</p>
 									</div>
@@ -174,45 +173,8 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>Function that accepts the current point in time and draws the ellipse</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="clear" class="tsd-anchor"></a>
-					<h3>clear</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">clear<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, color<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/a5043c2/src/shapes.ts#L84">shapes.ts:84</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Clears the entire canvas with a given color</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>canvas: <span class="tsd-signature-type">HTMLCanvasElement</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The canvas to fill</p>
-									</div>
-								</li>
-								<li>
-									<h5>color: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The CSS color string to fill the canvas with</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -225,16 +187,16 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_animation_.html">"animation"</a>
+						<a href="_behaviors_.html">"behaviors"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_core_.html">"core"</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_graphics_.html">"graphics"</a>
+					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="_shapes_.html">"shapes"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_style_.html">"style"</a>
 					</li>
 				</ul>
 			</nav>
@@ -248,9 +210,6 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_shapes_.html#animatedrect" class="tsd-kind-icon">animated<wbr>Rect</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_shapes_.html#clear" class="tsd-kind-icon">clear</a>
 					</li>
 				</ul>
 			</nav>

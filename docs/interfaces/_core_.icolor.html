@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ITransform | janim</title>
+	<title>IColor | janim</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_animation_.html">&quot;animation&quot;</a>
+					<a href="../modules/_core_.html">&quot;core&quot;</a>
 				</li>
 				<li>
-					<a href="_animation_.itransform.html">ITransform</a>
+					<a href="_core_.icolor.html">IColor</a>
 				</li>
 			</ul>
-			<h1>Interface ITransform</h1>
+			<h1>Interface IColor</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Object representing the transforms to apply to an animated shape</p>
+						<p>Color represented by four channels: red, green, blue, and alpha.</p>
 					</div>
 				</div>
 			</section>
@@ -76,7 +76,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ITransform</span>
+						<span class="target">IColor</span>
 					</li>
 				</ul>
 			</section>
@@ -87,9 +87,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_animation_.itransform.html#position" class="tsd-kind-icon">position</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_animation_.itransform.html#rotation" class="tsd-kind-icon">rotation</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_animation_.itransform.html#size" class="tsd-kind-icon">size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_.icolor.html#a" class="tsd-kind-icon">a</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_.icolor.html#b" class="tsd-kind-icon">b</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_.icolor.html#g" class="tsd-kind-icon">g</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_.icolor.html#r" class="tsd-kind-icon">r</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,49 +99,44 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="position" class="tsd-anchor"></a>
-					<h3>position</h3>
-					<div class="tsd-signature tsd-kind-icon">position<span class="tsd-signature-symbol">:</span> <a href="../modules/_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="_core_.iposition.html" class="tsd-signature-type">IPosition</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="a" class="tsd-anchor"></a>
+					<h3>a</h3>
+					<div class="tsd-signature tsd-kind-icon">a<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jolson88/janim/blob/a5043c2/src/animation.ts#L55">animation.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/3982077/src/core.ts#L15">core.ts:15</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>A function that, given the time, returns the position of the shape</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="rotation" class="tsd-anchor"></a>
-					<h3>rotation</h3>
-					<div class="tsd-signature tsd-kind-icon">rotation<span class="tsd-signature-symbol">:</span> <a href="../modules/_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="b" class="tsd-anchor"></a>
+					<h3>b</h3>
+					<div class="tsd-signature tsd-kind-icon">b<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jolson88/janim/blob/a5043c2/src/animation.ts#L59">animation.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/3982077/src/core.ts#L14">core.ts:14</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>A function that, given the time, returns the rotation in radians</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="size" class="tsd-anchor"></a>
-					<h3>size</h3>
-					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <a href="../modules/_core_.html#timefunction" class="tsd-signature-type">TimeFunction</a><span class="tsd-signature-symbol">&lt;</span><a href="_core_.isize.html" class="tsd-signature-type">ISize</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="g" class="tsd-anchor"></a>
+					<h3>g</h3>
+					<div class="tsd-signature tsd-kind-icon">g<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jolson88/janim/blob/a5043c2/src/animation.ts#L57">animation.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/3982077/src/core.ts#L13">core.ts:13</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>A function that, given the time, returns the size of the shape</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="r" class="tsd-anchor"></a>
+					<h3>r</h3>
+					<div class="tsd-signature tsd-kind-icon">r<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/3982077/src/core.ts#L12">core.ts:12</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -150,17 +146,17 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_animation_.html">"animation"</a>
-					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_behaviors_.html">"behaviors"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_core_.html">"core"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_shapes_.html">"shapes"</a>
+						<a href="../modules/_graphics_.html">"graphics"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_style_.html">"style"</a>
+						<a href="../modules/_shapes_.html">"shapes"</a>
 					</li>
 				</ul>
 			</nav>
@@ -169,38 +165,59 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_animation_.itransform.html" class="tsd-kind-icon">ITransform</a>
+						<a href="_core_.icolor.html" class="tsd-kind-icon">IColor</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_animation_.itransform.html#position" class="tsd-kind-icon">position</a>
+								<a href="_core_.icolor.html#a" class="tsd-kind-icon">a</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_animation_.itransform.html#rotation" class="tsd-kind-icon">rotation</a>
+								<a href="_core_.icolor.html#b" class="tsd-kind-icon">b</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_animation_.itransform.html#size" class="tsd-kind-icon">size</a>
+								<a href="_core_.icolor.html#g" class="tsd-kind-icon">g</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_core_.icolor.html#r" class="tsd-kind-icon">r</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#circularorbit" class="tsd-kind-icon">circular<wbr>Orbit</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_core_.iposition.html" class="tsd-kind-icon">IPosition</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_core_.isize.html" class="tsd-kind-icon">ISize</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/_core_.html#function" class="tsd-kind-icon">Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/_core_.html#function2" class="tsd-kind-icon">Function2</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/_core_.html#function3" class="tsd-kind-icon">Function3</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/_core_.html#function4" class="tsd-kind-icon">Function4</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_core_.html#time" class="tsd-kind-icon">Time</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_core_.html#origin" class="tsd-kind-icon">origin</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#lerpcolor" class="tsd-kind-icon">lerp<wbr>Color</a>
+						<a href="../modules/_core_.html#color" class="tsd-kind-icon">color</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#sinosc" class="tsd-kind-icon">sin<wbr>Osc</a>
+						<a href="../modules/_core_.html#position" class="tsd-kind-icon">position</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#startsketch" class="tsd-kind-icon">start<wbr>Sketch</a>
+						<a href="../modules/_core_.html#size" class="tsd-kind-icon">size</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#topercentage" class="tsd-kind-icon">to<wbr>Percentage</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_animation_.html#transform" class="tsd-kind-icon">transform</a>
+						<a href="../modules/_core_.html#topercentage" class="tsd-kind-icon">to<wbr>Percentage</a>
 					</li>
 				</ul>
 			</nav>
