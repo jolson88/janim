@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example - Phase</title>
+    <script src="../node_modules/ramda/dist/ramda.js"></script>
+    <script src="../dist/janim.js"></script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="800" height="800"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const center = J.constant(J.position(canvas.width / 2, canvas.height / 2));
+        const xOrbit = J.changeSpeed(0.25, J.orbit(center, J.constant(200)));
+        const yOrbit = J.changeSpeed(0.19, J.orbit(center, J.constant(200)));
+        const pos = J.liftA2((xo, yo) => J.position(xo.x, yo.y), xOrbit, yOrbit);
+        J.startSketch(canvas, setup, draw);
+
+        const ball = J.animatedEllipse(
+          canvas,
+          J.transform(
+            pos,
+            J.constant(J.size(5, 5))
+          ),
+          J.fill(
+            J.changeSpeed(
+              0.25,
+              J.colorRotate(
+                J.constant(J.color(0, 120, 240)),
+                J.constant(J.color(0, 240, 0))
+              )
+            )
+          )
+        );
+
+        function setup() {
+          J.clear(canvas, 'white');
+        }
+
+        function draw(time) {
+          //J.clear(canvas, 'rgba(255, 255, 255, 0.02)');
+          ball(time);
+        }
+    </script>
+  </body>
+</html>
