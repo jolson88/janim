@@ -10,8 +10,8 @@
     <script>
         const canvas = document.getElementById('myCanvas');
         const center = J.constant(J.position(canvas.width / 2, canvas.height / 2));
-        const xOrbit = J.changeSpeed(0.25, J.orbit(center, J.constant(200)));
-        const yOrbit = J.changeSpeed(0.19, J.orbit(center, J.constant(200)));
+        const xOrbit = J.slower(4, J.orbit(center, J.constant(200)));
+        const yOrbit = J.slower(4.8, J.orbit(center, J.constant(200)));
         const pos = J.liftA2((xo, yo) => J.position(xo.x, yo.y), xOrbit, yOrbit);
         J.startSketch(canvas, setup, draw);
 
@@ -22,8 +22,8 @@
             J.constant(J.size(5, 5))
           ),
           J.fill(
-            J.changeSpeed(
-              0.25,
+            J.slower(
+              4,
               J.colorRotate(
                 J.constant(J.color(0, 120, 240)),
                 J.constant(J.color(0, 240, 0))

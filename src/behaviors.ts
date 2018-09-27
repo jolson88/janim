@@ -92,6 +92,14 @@ export function colorRotate(
 //
 // *** Composition Behaviors ***
 //
+
+/**
+ * Lifts a two-argument non-behavior function into working with behaviors
+ * @param fn The function to lift into working with behaviors
+ * @param b1 The first behavior to pass
+ * @param b2 The second behavior to pass
+ * @returns A new behavior that gets the values for the behaviors and passes values to fn
+ */
 export function liftA2<T1, T2, U>(
     fn: Function2<T1, T2, U>,
     b1: Behavior<T1>,
@@ -102,6 +110,14 @@ export function liftA2<T1, T2, U>(
     };
 }
 
+/**
+ * Lifts a three-argument non-behavior function into working with behaviors
+ * @param fn The function to lift into working with behaviors
+ * @param b1 The first behavior to pass
+ * @param b2 The second behavior to pass
+ * @param b3 The third behavior to pass
+ * @returns A new behavior that gets the values for the behaviors and passes values to fn
+ */
 export function liftA3<T1, T2, T3, U>(
     fn: Function3<T1, T2, T3, U>,
     b1: Behavior<T1>,
@@ -113,6 +129,15 @@ export function liftA3<T1, T2, T3, U>(
     };
 }
 
+/**
+ * Lifts a four-argument non-behavior function into working with behaviors
+ * @param fn The function to lift into working with behaviors
+ * @param b1 The first behavior to pass
+ * @param b2 The second behavior to pass
+ * @param b3 The third behavior to pass
+ * @param b3 The fourth behavior to pass
+ * @returns A new behavior that gets the values for the behaviors and passes values to fn
+ */
 export function liftA4<T1, T2, T3, T4, U>(
     fn: Function4<T1, T2, T3, T4, U>,
     b1: Behavior<T1>,
@@ -134,6 +159,11 @@ export function liftA4<T1, T2, T3, T4, U>(
  */
 export const time: Behavior<number> = R.identity;
 
+/**
+ * Slows down the rate at which time passes for a given behavior
+ * @param speedFactor How much slower to make time pass (2 === twice as slow)
+ * @param b The behavior to change time for
+ */
 export function slower<T>(
     speedFactor: number,
     b: Behavior<T>,
@@ -141,6 +171,11 @@ export function slower<T>(
     return R.compose(b, R.multiply(1 / speedFactor));
 }
 
+/**
+ * Speeds up the rate at which time passes for a given behavior
+ * @param speedFactor How much faster time passes (2 === twice as fast)
+ * @param b The behavior to change time for
+ */
 export function faster<T>(
     speedFactor: number,
     b: Behavior<T>,
@@ -148,6 +183,11 @@ export function faster<T>(
     return R.compose(b, R.multiply(speedFactor));
 }
 
+/**
+ * Causes a behavior to observe time as happening earlier than it does
+ * @param sec The number of seconds earlier that time should be perceived as
+ * @param b The behavior to change time for
+ */
 export function earlier<T>(
     sec: number,
     b: Behavior<T>,
@@ -155,6 +195,11 @@ export function earlier<T>(
     return R.compose(b, R.add(-sec * 1000)); // Add a neg number is cleaner than partialRight of subtract
 }
 
+/**
+ * Causes a behavior to observe time as happening later than it does
+ * @param sec The number of seconds later that time should be perceived as
+ * @param b The behavior to change time for
+ */
 export function later<T>(
     sec: number,
     b: Behavior<T>,
