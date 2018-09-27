@@ -15,18 +15,8 @@ test('Handlers', (t) => {
     const e = timeIs(3000);
     const b = constant('foo');
     const eb = handle(e, R.always(b));
-    const occ = eb(3001);
-    t.equal(occ.length, 1, 'handle mapped');
-    t.equal(R.last(occ).value(null), 'foo', 'handle behavior invokeable');
-    t.end();
-});
-
-test('Behavior switching', (t) => {
-    const e = timeIs(3000);
-    const b1 = constant('foo');
-    const b2 = constant('bar');
-    const s = switcher(b1, handle(e, R.always(b2)));
-    t.equal(s(2999), 'foo', 'switch uses initial behavior');
-    t.equal(s(3001), 'bar', 'switch uses event behavior');
+    const ei = eb(3001);
+    t.equal(ei.length, 1, 'handle mapped');
+    t.equal(R.last(ei).value(null), 'foo', 'handle behavior can be used');
     t.end();
 });

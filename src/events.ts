@@ -1,29 +1,34 @@
 import * as R from 'ramda';
 import { Behavior, Function, Time } from './janim';
 
-interface IJanimEventOccurrence<T> {
+interface IReactiveEventInstance<T> {
     time: Time;
     value: T;
 }
 
-export type JanimEvent<T> = (time: Time) => Array<IJanimEventOccurrence<T>>;
+/**
+ * A function representing event instances over time. Returns all event instances before time t.
+ */
+export type ReactiveEvent<T> = (t: Time) => Array<IReactiveEventInstance<T>>;
 
-export function handle<T, U>(e: JanimEvent<T>, fn: Function<T, Behavior<U>>): JanimEvent<Behavior<U>> {
+/**
+ * Handles an event by converting it to an event of behaviors for switching and stepping functionality
+ * @param e The event to handle
+ * @param fn Function that is passed event instance data and returns handling of the event as a behavior
+ */
+export function handle<T, U>(e: ReactiveEvent<T>, fn: Function<T, Behavior<U>>): ReactiveEvent<Behavior<U>> {
     return (t) => {
-        return R.map((occ: IJanimEventOccurrence<T>) => {
-            return { time: occ.time, value: fn(occ.value) };
+        return R.map((ei: IReactiveEventInstance<T>) => {
+            return { time: ei.time, value: fn(ei.value) };
         }, e(t));
     };
 }
 
-export function switcher<T1, T2>(b: Behavior<T1>, e: JanimEvent<Behavior<T2>>): Behavior<T1 | T2> {
-    return (t) => {
-        const occ = R.last(e(t));
-        return (!R.isNil(occ)) ? occ.value(t) : b(t);
-    };
-}
-
-export function timeIs(time: Time): JanimEvent<Time> {
+/**
+ * Creates an event that has an occurrence at a given time
+ * @param time The time that the event occurs
+ */
+export function timeIs(time: Time): ReactiveEvent<Time> {
     return (t) => {
         return (time < t) ? [{ time, value: time }] : [];
     };

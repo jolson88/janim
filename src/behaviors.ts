@@ -7,6 +7,7 @@ import {
     IColor,
     IPosition,
     position,
+    ReactiveEvent,
     Time,
     toPercentage,
 } from './janim';
@@ -45,6 +46,11 @@ export function orbit(
     );
 }
 
+/**
+ * Adds two position behaviors together and returns a new behavior
+ * @param firstPos The position to be added to
+ * @param secondPos The position to add to the first position
+ */
 export function positionAdd(
     firstPos: Behavior<IPosition>,
     secondPos: Behavior<IPosition>,
@@ -147,6 +153,18 @@ export function liftA4<T1, T2, T3, T4, U>(
 ): Behavior<U> {
     return (t) => {
         return fn(b1(t), b2(t), b3(t), b4(t));
+    };
+}
+
+/**
+ * Switches between two behaviors based on an occurrence of an event
+ * @param b The initial behavior to exhibit
+ * @param e An event whose payload is a behavior that is switched to when the event occurs
+ */
+export function switcher<T1, T2>(b: Behavior<T1>, e: ReactiveEvent<Behavior<T2>>): Behavior<T1 | T2> {
+    return (t) => {
+        const ei = R.last(e(t));
+        return (!R.isNil(ei)) ? ei.value(t) : b(t);
     };
 }
 

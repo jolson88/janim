@@ -7,6 +7,7 @@ import {
     cos,
     earlier,
     faster,
+    handle,
     later,
     liftA2,
     orbit,
@@ -14,7 +15,9 @@ import {
     positionAdd,
     sin,
     slower,
+    switcher,
     time,
+    timeIs,
     triangle,
 } from './janim';
 import { nearEqual } from './testHelpers';
@@ -23,6 +26,16 @@ test('Constant returns', (t) => {
     const c: any = constant(1);
     t.equal(c(2), 1, 'should return constant value on first call');
     t.equal(c('string'), 1, 'should return constant value on successive calls');
+    t.end();
+});
+
+test('Behavior switching', (t) => {
+    const e = timeIs(3000);
+    const b1 = constant('foo');
+    const b2 = constant('bar');
+    const s = switcher(b1, handle(e, R.always(b2)));
+    t.equal(s(2999), 'foo', 'switch uses initial behavior');
+    t.equal(s(3001), 'bar', 'switch uses event behavior');
     t.end();
 });
 

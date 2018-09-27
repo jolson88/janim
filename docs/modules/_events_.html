@@ -69,14 +69,13 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_events_.html#janimevent" class="tsd-kind-icon">Janim<wbr>Event</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_events_.html#reactiveevent" class="tsd-kind-icon">Reactive<wbr>Event</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_events_.html#handle" class="tsd-kind-icon">handle</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_events_.html#switcher" class="tsd-kind-icon">switcher</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_events_.html#timeis" class="tsd-kind-icon">time<wbr>Is</a></li>
 							</ul>
 						</section>
@@ -86,30 +85,35 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-					<a name="janimevent" class="tsd-anchor"></a>
-					<h3>Janim<wbr>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Janim<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<a name="reactiveevent" class="tsd-anchor"></a>
+					<h3>Reactive<wbr>Event</h3>
+					<div class="tsd-signature tsd-kind-icon">Reactive<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jolson88/janim/blob/9f3e8df/src/events.ts#L9">events.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/jolson88/janim/blob/0a724c8/src/events.ts#L12">events.ts:12</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A function representing event instances over time. Returns all event instances before time t.</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><a href="_core_.html#time" class="tsd-signature-type">Time</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IJanimEventOccurrence</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>t<span class="tsd-signature-symbol">: </span><a href="_core_.html#time" class="tsd-signature-type">Time</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IReactiveEventInstance</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>time: <a href="_core_.html#time" class="tsd-signature-type">Time</a></h5>
+												<h5>t: <a href="_core_.html#time" class="tsd-signature-type">Time</a></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IJanimEventOccurrence</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IReactiveEventInstance</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 									</li>
 								</ul>
 							</li>
@@ -123,15 +127,20 @@
 					<a name="handle" class="tsd-anchor"></a>
 					<h3>handle</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">handle&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><a href="_events_.html#janimevent" class="tsd-signature-type">JanimEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, fn<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_events_.html#janimevent" class="tsd-signature-type">JanimEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">handle&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><a href="_events_.html#reactiveevent" class="tsd-signature-type">ReactiveEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, fn<span class="tsd-signature-symbol">: </span><a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_events_.html#reactiveevent" class="tsd-signature-type">ReactiveEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/9f3e8df/src/events.ts#L11">events.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/0a724c8/src/events.ts#L19">events.ts:19</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Handles an event by converting it to an event of behaviors for switching and stepping functionality</p>
+								</div>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -144,48 +153,19 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>e: <a href="_events_.html#janimevent" class="tsd-signature-type">JanimEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>e: <a href="_events_.html#reactiveevent" class="tsd-signature-type">ReactiveEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event to handle</p>
+									</div>
 								</li>
 								<li>
 									<h5>fn: <a href="_core_.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Function that is passed event instance data and returns handling of the event as a behavior</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_events_.html#janimevent" class="tsd-signature-type">JanimEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-					<a name="switcher" class="tsd-anchor"></a>
-					<h3>switcher</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">switcher&lt;T1, T2&gt;<span class="tsd-signature-symbol">(</span>b<span class="tsd-signature-symbol">: </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol">&gt;</span>, e<span class="tsd-signature-symbol">: </span><a href="_events_.html#janimevent" class="tsd-signature-type">JanimEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/9f3e8df/src/events.ts#L19">events.ts:19</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T1</h4>
-								</li>
-								<li>
-									<h4>T2</h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>b: <a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-								<li>
-									<h5>e: <a href="_events_.html#janimevent" class="tsd-signature-type">JanimEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_events_.html#reactiveevent" class="tsd-signature-type">ReactiveEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_behaviors_.html#behavior" class="tsd-signature-type">Behavior</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -193,22 +173,30 @@
 					<a name="timeis" class="tsd-anchor"></a>
 					<h3>time<wbr>Is</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">time<wbr>Is<span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><a href="_core_.html#time" class="tsd-signature-type">Time</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_events_.html#janimevent" class="tsd-signature-type">JanimEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_core_.html#time" class="tsd-signature-type">Time</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">time<wbr>Is<span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><a href="_core_.html#time" class="tsd-signature-type">Time</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_events_.html#reactiveevent" class="tsd-signature-type">ReactiveEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_core_.html#time" class="tsd-signature-type">Time</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jolson88/janim/blob/9f3e8df/src/events.ts#L26">events.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/jolson88/janim/blob/0a724c8/src/events.ts#L31">events.ts:31</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an event that has an occurrence at a given time</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>time: <a href="_core_.html#time" class="tsd-signature-type">Time</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The time that the event occurs</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_events_.html#janimevent" class="tsd-signature-type">JanimEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_core_.html#time" class="tsd-signature-type">Time</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_events_.html#reactiveevent" class="tsd-signature-type">ReactiveEvent</a><span class="tsd-signature-symbol">&lt;</span><a href="_core_.html#time" class="tsd-signature-type">Time</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -240,13 +228,10 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_events_.html#janimevent" class="tsd-kind-icon">Janim<wbr>Event</a>
+						<a href="_events_.html#reactiveevent" class="tsd-kind-icon">Reactive<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_events_.html#handle" class="tsd-kind-icon">handle</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_events_.html#switcher" class="tsd-kind-icon">switcher</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_events_.html#timeis" class="tsd-kind-icon">time<wbr>Is</a>
